@@ -1,8 +1,11 @@
 import React from 'react'
+import Title from './Title'
 
 const Contact = () => {
     return (
-        <div className='my-60'>Contact</div>
+        <div className='h-72 mx-auto text-center'>
+            <Title title="Contact" />
+        </div>
     )
 }
 

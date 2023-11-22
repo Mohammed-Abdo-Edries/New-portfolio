@@ -1,16 +1,24 @@
-import { motion, AnimatePresence } from "framer-motion"
+import React, { useEffect, useRef } from 'react'
+import { motion, useAnimation, useInView } from "framer-motion"
 const Title = (title) => {
+    const ref = useRef(null);
+    const inView = useInView(ref, { once: false });
+    const mainControls = useAnimation();
+    useEffect(() => {
+        if (inView) {
+            mainControls.start("visible");
+        }
+    }, [inView]);
     return (
-        <AnimatePresence>
-            <motion.div key="title" mode='wait'
-                initial={{ y: -150 }}
-                animate={{ y: 0 }}
-                transition={{ delay: 0.2, type: "spring", stiffness: 250 }}
-                exit={{ y: -150, opacity: 0 }}
+        <div ref={ref}>
+            <motion.div className="title" variants={{ hidden: { y: -150 }, visible: { y: 0 } }}
+                initial="hidden" animate={mainControls}
+                transition={{ duration: 0.2, type: "spring", stiffness: 250 }}
+                whileInView="visible"
                 data-title={title.title}>
                 <h1>{title.title}</h1>
             </motion.div>
-        </AnimatePresence>
+        </div>
     )
 }
 export default Title;
