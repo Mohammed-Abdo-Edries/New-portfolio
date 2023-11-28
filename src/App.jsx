@@ -8,7 +8,7 @@ import About from './Components/About'
 function App() {
 
   return (
-    <div className="bg-blue-700">
+    <div className="bg-blue-700 rounded-xl">
       <Navbar />
       <Home />
       <Skills />
