@@ -8,11 +8,11 @@ import About from './Components/About'
 function App() {
 
   return (
-    <div className="bg-blue-700 rounded-xl">
+    <div className="bg-white rounded-xl">
       <Navbar />
       <Home />
-      <Skills />
       <About />
+      <Skills />
       <Projects />
       <Contact />
     </div>

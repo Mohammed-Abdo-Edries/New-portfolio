@@ -1,19 +1,11 @@
-import React, { useEffect, useRef } from 'react'
-import { motion, useAnimation, useInView } from "framer-motion"
+import { motion } from "framer-motion"
 const Container = ({ children, delay, variants }) => {
-    const ref = useRef(null);
-    const inView = useInView(ref, { once: false });
-    const mainControls = useAnimation();
-    useEffect(() => {
-        if (inView) {
-            mainControls.start("visible");
-        }
-    }, [inView]);
+    
     return (
-        <div ref={ref}>
+        <div >
             <motion.div variants={variants}
-                initial="hidden" animate={mainControls} transition={{ delay, type: "spring", stiffness: 30 }}
-                whileInView="visible"  >
+                initial="hidden" animate="visible" transition={{ delay, type: "spring", 
+                    stiffness: 30 }}  >
                 {children}
             </motion.div>
         </div>
