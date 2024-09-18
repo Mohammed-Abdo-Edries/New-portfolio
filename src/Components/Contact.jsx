@@ -3,7 +3,7 @@ import Title from './Title'
 
 const Contact = () => {
     return (
-        <div className='h-96 mx-auto text-center mb-8'>
+        <div id='#contact' className='h-96 mx-auto text-center mb-8'>
             <Title title="Contact Me" /> 
             <div className="container">
           <form className="form"
@@ -26,14 +26,6 @@ const Contact = () => {
               </li>
             </ul>
           </form>
-          <div className="logos text-center">
-            <a href="https://www.linkedin.com/in/mohammed-abdo-92249a247" target="_blank" rel="noopener noreferrer" className="logo">
-            </a>
-            <a href="mailto:mohammed.abdo1916@gmail.com" target="_blank" rel="noopener noreferrer" className="logo">
-                </a>
-            <a href="https://github.com/Mohammed-Abdo-Edries" target="_blank" rel="noopener noreferrer" className="logo">
-            </a>
-          </div>
         </div>
         </div>
     )

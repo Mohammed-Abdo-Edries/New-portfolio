@@ -20,13 +20,19 @@ const Home = () => {
             <Container delay={.3} variants={variants}>
                 <div className='flex justify-center mt-2 gap-2 text-xl'>
                     <button className='bg-white text-black p-1 rounded'>
+                    <a href="https://github.com/Mohammed-Abdo-Edries" target="_blank" rel="noopener noreferrer" className="logo">
                         <FiGithub />
+                    </a>
                     </button>
                     <button className='bg-white text-black p-1 rounded'>
+                        <a href="https://www.linkedin.com/in/mohammed-abdo-92249a247" target="_blank" rel="noopener noreferrer" className="logo">
                         <CiLinkedin />
+                        </a>
                     </button>
                     <button className='bg-white text-black p-1 rounded'>
+                    <a href="mailto:mohammed.abdo1916@gmail.com" target="_blank" rel="noopener noreferrer" className="logo">
                         <CiMail />
+                </a>
                     </button>
                 </div>
             </Container>

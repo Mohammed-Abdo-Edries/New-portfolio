@@ -1,9 +1,10 @@
 // import React from 'react'
 import { FaCss3, FaGithub, FaHtml5, FaReact, FaNpm, FaMobile, FaNode, FaJsSquare } from "react-icons/fa"
-import { BiLogoGit, BiLogoMongodb } from "react-icons/bi"
-// import Container from './Container'
-import { AnimatePresence, motion } from "framer-motion"
+import { BiLogoGit, BiLogoMongodb, BiLogoTailwindCss } from "react-icons/bi"
+// import { RiNextjsLine } from "react-icons/ri"
 import { SiJsonwebtokens } from "react-icons/si"
+import { TbBrandFramerMotion, TbMobiledata } from "react-icons/tb"
+import { GoCommandPalette } from "react-icons/go"
 import Container from "./Container"
 import Title from "./Title"
 const Skills = () => {
@@ -12,8 +13,8 @@ const Skills = () => {
         visible: { x: 0, opacity: 1 }
     }
     return (
-        <AnimatePresence>
-        <div className='container max-w-screen-2xl text-center h-fit py-8 bg-white rounded-lg'>
+        // <AnimatePresence>
+        <div id='#skills' className='container max-w-screen-2xl text-center h-fit py-8 bg-white rounded-lg'>
             <Title title="Skills" />
             <div className='container skills grid gap-4 sm:grid-cols-3 my-4 px-4 sm:mx-auto'>
                 <Container variants={variants} initial="hidden" animate="visible"
@@ -21,9 +22,17 @@ const Skills = () => {
                 exit={{ opacity: 0, y: 20 }}>
                     <div className='bg-white rounded-xl w-full mx-auto py-2'>
                         <div className='text-3xl '><FaHtml5 className='mx-auto' /></div>
+                        
                         <p className='mt-2'>HTML5</p>
+                        <p className='mt-2'>Express.js</p>
                     </div>
                 </Container>
+                <div variants={variants} delay={.1} key="222">
+                    <div className='bg-white rounded-xl w-full mx-auto py-2'>
+                        <div className='text-3xl '><FaCss3 className='mx-auto' /></div>
+                        <p className='mt-2'>CSS3</p>
+                    </div>
+                </div>
                 <div variants={variants} delay={.1} key="222">
                     <div className='bg-white rounded-xl w-full mx-auto py-2'>
                         <div className='text-3xl '><FaCss3 className='mx-auto' /></div>
@@ -84,9 +93,32 @@ const Skills = () => {
                         <p className='mt-2'>JWT</p>
                     </div>
                 </div>
+                <div variants={variants} delay={1} key="997">
+                    <div className='bg-white rounded-xl w-full mx-auto py-2'>
+                        <div className='text-3xl '><BiLogoTailwindCss className='mx-auto' /></div>
+                        <p className='mt-2'>Tailwind</p>
+                    </div>
+                </div>
+                <div variants={variants} delay={1} key="997">
+                    <div className='bg-white rounded-xl w-full mx-auto py-2'>
+                        <div className='text-3xl '><TbBrandFramerMotion className='mx-auto' /></div>
+                        <p className='mt-2'>framer motion</p>
+                    </div>
+                </div>
+                <div variants={variants} delay={1} key="997">
+                    <div className='bg-white rounded-xl w-full mx-auto py-2'>
+                        <div className='text-3xl '><TbMobiledata className='mx-auto' /></div>
+                        <p className='mt-2'>RESTful API's</p>
+                    </div>
+                </div>
+                <div variants={variants} delay={1} key="997">
+                    <div className='bg-white rounded-xl w-full mx-auto py-2'>
+                        <div className='text-3xl '><GoCommandPalette className='mx-auto' /></div>
+                        <p className='mt-2'>Command line</p>
+                    </div>
+                </div>
             </div>
         </div>
-        </AnimatePresence>
     )
 }
 

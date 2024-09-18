@@ -1,5 +1,7 @@
-import Popup from 'reactjs-popup'
-import {GiHamburgerMenu} from "react-icons/gi"
+// import Popup from 'reactjs-popup'
+// import {GiHamburgerMenu} from "react-icons/gi"
+// import { HashLink as Link } from 'react-router-hash-link'
+// import { Link } from 'react-router-dom'
 
 const Navbar = () => {
     return (
@@ -8,16 +10,15 @@ const Navbar = () => {
                 <div className='px-4'>
                     Portfolio
                 </div>
-                <Popup trigger={<button><GiHamburgerMenu/></button>} closeOnDocumentClick position={"bottom right"}>
+                {/* <Popup trigger={<button><GiHamburgerMenu/></button>} closeOnDocumentClick position={"bottom right"}>
                     <ul>
                         <li>
-                            <link rel="stylesheet" href="" />
+                            <Link href="#skills">Skills</Link>
                         </li>
-                        <li>Skills</li>
                         <li>Projects</li>
                         <li>Contact me</li>
                     </ul>
-                </Popup>
+                </Popup> */}
             </div>
         </div>
     )
