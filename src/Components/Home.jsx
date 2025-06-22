@@ -11,7 +11,7 @@ const Home = () => {
         exit: {x: "+100%", opacity: 0}
     }
     return (
-        <div className='container bg-white dark:bg-black  dark:text-white text-center h-fit sm:h-[calc(90vh+0px)] pt-40 text-xl max-w-full' >
+        <div className='container bg-white dark:bg-black  dark:text-white text-center h-fit sm:h-[calc(90vh+0px)] py-40 text-xl max-w-full' >
             <Container delay={0} variants={variants} className='text-xs'>
                 Hi, I am
             </Container>

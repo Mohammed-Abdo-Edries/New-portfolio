@@ -57,14 +57,14 @@ const Navbar = () => {
             </AnimatePresence>
           }
                 <Popup trigger={<button><GiHamburgerMenu className='ml-2'/></button>} closeOnDocumentClick position={"bottom right"}>
-                    <ul className='w-60 pl-10 py-2 rounded-md bg-blue-700 text-white dark:bg-white dark:text-black'>
-                        <li className='pb-2 hover:pl-2'>
+                    <ul className='w-60 rounded-md bg-blue-700 text-white dark:bg-white dark:text-black'>
+                        <li className='pb-2 hover:pl-6 pt-2 border-stone-400 pl-4 border-b-2'>
                             <a  href="#skills">Skills</a>
                         </li>
-                        <li className='pb-2 hover:pl-2'>
+                        <li className='pb-2 hover:pl-6 py-2 border-stone-400 pl-4 border-b-2'>
                             <a href="#projects">Projects</a>
                         </li>
-                        <li className='pb-2 hover:pl-2'>
+                        <li className='pb-2 hover:pl-6 pl-4 py-2'>
                             <a href="#contact">Contact</a>
                         </li>
                     </ul>

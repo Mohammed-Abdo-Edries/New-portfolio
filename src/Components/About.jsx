@@ -3,7 +3,7 @@ import Title from './Title'
 
 const About = () => {
     return (
-        <div className='container max-w-screen-2xl dark:bg-black  dark:text-white h-fit sm:h-[calc(70vh+0px)] px-8 pt-10 text-center rounded-lg'>
+        <div className='container max-w-screen-2xl dark:bg-black  dark:text-white h-fit sm:h-[calc(70vh+0px)] px-8 py-10 text-center rounded-lg'>
             <Title title="About Me" />
             <div className='mt-4'>
             A self taught web developer looking for opportunities. Javascript | React | undergraduate Student - oil engineering.
