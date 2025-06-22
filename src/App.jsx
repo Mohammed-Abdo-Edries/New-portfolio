@@ -5,17 +5,20 @@ import Skills from './Components/Skills'
 import Projects from './Components/Projects'
 import Contact from './Components/Contact'
 import About from './Components/About'
+import { BrowserRouter } from 'react-router-dom'
 function App() {
 
   return (
-    <div className="bg-white rounded-xl">
+    <BrowserRouter>
+    <div className="bg-white dark:bg-black rounded-xl">
       <Navbar />
       <Home />
       <About />
       <Skills />
-      <Projects />
-      <Contact />
+      {/* <Projects /> */}
+      {/* <Contact /> */}
     </div>
+    </BrowserRouter>
   )
 }
 
