@@ -14,7 +14,7 @@ const Skills = () => {
     }
     return (
         // <AnimatePresence>
-        <div id="#skills" className='container max-w-screen-2xl text-center h-fit py-10 bg-white dark:bg-black  dark:text-white rounded-lg'>
+        <div id="skills" className='container max-w-screen-2xl text-center h-fit py-10 bg-white dark:bg-black  dark:text-white rounded-lg'>
             <Title title="Skills" />
             <div className='container skills grid gap-4 sm:grid-cols-3 my-4 px-4 sm:mx-auto'>
                 <Container variants={variants} initial="hidden" animate="visible"

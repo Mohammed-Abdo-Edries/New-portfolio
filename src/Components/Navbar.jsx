@@ -19,12 +19,18 @@ const Navbar = () => {
         exit: { y: 25, opacity: 0 }
       }
     return (
-        <div className='sticky top-0 max-w-full backdrop-blur-2xl z-10 backdrop-brightness-90 bg-stone-400 h-12 py-2 px-8'>
-            <div className='container flex justify-between'>
-                <div className='px-4'>
-                    Portfolio
+        <div className='fixed top-0 max-w-full container flex justify-between backdrop-blur-2xl z-10 backdrop-brightness-90 bg-white/10 h-14 sm:h-20 dark:text-white py-3 sm:py-7 px-8 sm:px-12'>
+                <div className='px-4 text-xl font-bold'>
+                <span className=''>Mohamed</span>{" "}<span className='text-primary'>Portfolio</span>
                 </div>
                 <div className='flex ml-auto'>
+                  <div className='hidden sm:block'>
+                    <a className='hover:text-primary transition-colors duration-300' href="#home">Home</a>
+                    <a className='pl-4 hover:text-primary transition-colors duration-300' href="#about">About</a>
+                    <a className='pl-4 hover:text-primary transition-colors duration-300' href="#skills">Skills</a>
+                    <a className='pl-4 hover:text-primary transition-colors duration-300' href="#projects">Projects</a>
+                    <a className='pl-4 hover:text-primary transition-colors duration-300' href="#contact">Contact</a>
+                  </div>
                 {theme === 'dark' ?
             <AnimatePresence mode='wait' >
               {theme === "dark" && (
@@ -32,7 +38,7 @@ const Navbar = () => {
                   animate="enter"
                   exit='exit'
                   transition={{ duration: 0.3 }}
-                  className='w-9 h-8 px-2 rounded bg-orange-200 text-gray-900'
+                  className='w-9 h-8 px-4 rounded text-orange-200'
                   onClick={() => {
                     setTheme(theme === "dark" ? "light" : "dark")
                   }}>
@@ -47,7 +53,7 @@ const Navbar = () => {
                   animate="enter" variants={variants}
                   exit="exit"
                   transition={{ duration: 0.3 }}
-                  className='px-2 w-9 h-8 rounded bg-purple-700 text-white'
+                  className='px-4 w-9 h-8 rounded text-purple-700'
                   onClick={() => {
                     setTheme(theme === "light" ? "dark" : "light")
                   }}>
@@ -56,22 +62,27 @@ const Navbar = () => {
               )}
             </AnimatePresence>
           }
-                <Popup trigger={<button><GiHamburgerMenu className='ml-2'/></button>} closeOnDocumentClick position={"bottom right"}>
+                <Popup trigger={<button><GiHamburgerMenu className='ml-2 sm:hidden'/></button>} closeOnDocumentClick position={"bottom right"}>
                     <ul className='w-60 rounded-md bg-blue-700 text-white dark:bg-white dark:text-black'>
                         <li className='pb-2 hover:pl-6 pt-2 border-stone-400 pl-4 border-b-2'>
-                            <a  href="#skills">Skills</a>
+                            <a key={"skills"} href="#skills">Skills</a>
                         </li>
                         <li className='pb-2 hover:pl-6 py-2 border-stone-400 pl-4 border-b-2'>
-                            <a href="#projects">Projects</a>
+                            <a key={"projects"} href="#projects">Projects</a>
                         </li>
                         <li className='pb-2 hover:pl-6 pl-4 py-2'>
-                            <a href="#contact">Contact</a>
+                            <a key={"contact"} href="#contact">Contact</a>
+                        </li>
+                        <li className='pb-2 hover:pl-6 pl-4 py-2'>
+                            <a key={"about"} href="#about">about</a>
+                        </li>
+                        <li className='pb-2 hover:pl-6 pl-4 py-2'>
+                            <a key={"home"} href="#home">Home</a>
                         </li>
                     </ul>
                 </Popup>
           </div>
-            </div>
-        </div>
+    </div>
     )
 }
 

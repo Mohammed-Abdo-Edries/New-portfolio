@@ -10,13 +10,13 @@ function App() {
 
   return (
     <BrowserRouter>
-    <div className="bg-white dark:bg-black rounded-xl">
+    <div className="bg-white dark:bg-black dark:text-white rounded-xl">
       <Navbar />
       <Home />
       <About />
       <Skills />
-      {/* <Projects /> */}
-      {/* <Contact /> */}
+      <Projects />
+      <Contact />
     </div>
     </BrowserRouter>
   )

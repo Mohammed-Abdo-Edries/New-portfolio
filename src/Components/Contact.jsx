@@ -3,7 +3,7 @@ import Title from './Title'
 
 const Contact = () => {
     return (
-        <div id='#contact' className='h-96 mx-auto text-center mb-8'>
+        <div id='contact' className='h-96 mx-auto text-center mb-8'>
             <Title title="Contact Me" /> 
             <div className="container">
           <form className="form"

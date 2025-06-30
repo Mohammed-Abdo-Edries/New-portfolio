@@ -11,9 +11,9 @@ const Title = (title) => {
     }, [inView]);
     return (
         <div ref={ref}>
-            <motion.div className="title text-3xl text-blue-700" variants={{ hidden: { x: "-100vh" }, visible: { x: 0 } }}
+            <motion.div className="title text-3xl sm:text-6xl font-bold text-primary" variants={{ hidden: { x: "-100vh" }, visible: { x: 0 } }}
                 initial="hidden" animate={mainControls}
-                transition={{ duration: 0.2,delay:.5, type: "spring", stiffness: 30 }}
+                transition={{ duration: 0.2,dela3y:.5, type: "spring", stiffness: 30 }}
                 whileInView="visible"
                 data-title={title.title}>
                 <h1>{title.title}</h1>

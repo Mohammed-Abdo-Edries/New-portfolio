@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+:root {
+    --primary: 250 47% 60%;
+}
+@layer utilities{
+    .text-primary{
+      color: hsl(var(--primary))
+    }
+    .bg-primary{
+      background-color: hsl(var(--primary))
+    }
+}
