@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { motion, useAnimation, useInView } from "framer-motion"
-const Title = (title) => {
+const Title = () => {
     const ref = useRef(null);
     const inView = useInView(ref, { once: false });
     const mainControls = useAnimation();
@@ -11,12 +11,15 @@ const Title = (title) => {
     }, [inView]);
     return (
         <div ref={ref}>
-            <motion.div className="title text-3xl sm:text-6xl font-bold text-primary" variants={{ hidden: { x: "-100vh" }, visible: { x: 0 } }}
+            <motion.div className="title text-3xl sm:text-6xl font-bold text-primary" variants={{
+                hidden: { opacity: 0 },
+        visible: {opacity: 1 },
+        exit: { opacity: 0}
+            }}
                 initial="hidden" animate={mainControls}
-                transition={{ duration: 0.2,dela3y:.5, type: "spring", stiffness: 30 }}
-                whileInView="visible"
-                data-title={title.title}>
-                <h1>{title.title}</h1>
+                // transition={{ type: "spring", stiffness: 30 }}
+                whileInView="visible">
+                    
             </motion.div>
         </div>
     )

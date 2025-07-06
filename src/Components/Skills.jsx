@@ -1,136 +1,80 @@
-// import React from 'react'
-import { FaCss3, FaGithub, FaHtml5, FaReact, FaNpm, FaMobile, FaNode, FaJsSquare } from "react-icons/fa"
+import { FaCss3, FaGithub, FaHtml5, FaReact, FaNpm, FaNode, FaJsSquare } from "react-icons/fa"
 import { BiLogoGit, BiLogoMongodb, BiLogoTailwindCss } from "react-icons/bi"
-// import { RiNextjsLine } from "react-icons/ri"
+import { useState } from "react"
 import { SiJsonwebtokens,SiSequelize, SiPostgresql } from "react-icons/si"
-import { TbBrandFramerMotion, TbMobiledata } from "react-icons/tb"
-import { GoCommandPalette } from "react-icons/go"
-import Container from "./Container"
-import Title from "./Title"
+import { TbBrandFramerMotion, TbMobiledata, TbBrandNextjs } from "react-icons/tb"
+// import { GoCommandPalette } from "react-icons/go"
+// import Container from "./Container"
+// import Title from "./Title"
 const Skills = () => {
+    const skills = [
+  { name: "HTML", icon: <FaHtml5 /> , category: "frontend" },
+  { name: "JavaScript", icon: <FaJsSquare /> , category: "frontend" },
+  { name: "React", icon: <FaReact /> , category: "frontend" },
+  { name: "CSS", icon: <FaCss3 /> , category: "frontend" },
+  { name: "Tailwind CSS", icon: <BiLogoTailwindCss /> , category: "frontend" },
+  { name: "Framer Motion", icon: <TbBrandFramerMotion /> , category: "frontend" },
+  { name: "Next.js", icon: <TbBrandNextjs /> , category: "frontend" },
+
+  { name: "Node.js", icon: <FaNode /> , category: "backend" },
+  { name: "MongoDB", icon: <BiLogoMongodb /> , category: "backend" },
+  { name: "PostgreSQL", icon: <SiPostgresql /> , category: "backend" },
+  { name: "JWT", icon: <SiJsonwebtokens /> , category: "backend" },
+  { name: "Sequelize", icon: <SiSequelize /> , category: "backend" },
+  { name: "RESTful API's", icon: <TbMobiledata /> , category: "backend" },
+
+  { name: "GitHub", icon: <BiLogoGit /> , category: "tools" },
+  { name: "Git", icon: <FaGithub /> , category: "tools" },
+  { name: "NPM", icon: <FaNpm /> , category: "tools" },
+];
     const variants = {
         hidden: { x: "-100vh", opacity: 0 },
         visible: { x: 0, opacity: 1 }
     }
+    const [activeCategory, setActiveCategory] = useState("all");
+const categories = ["all", "frontend", "backend", "tools"];
+  const filteredSkills = skills.filter(
+    (skill) => activeCategory === "all" || skill.category === activeCategory
+  );
     return (
-        // <AnimatePresence>
-        <div id="skills" className='container max-w-screen-2xl text-center h-fit py-10 bg-white dark:bg-black  dark:text-white rounded-lg'>
-            <Title title="Skills" />
-            <div className='container skills grid gap-4 sm:grid-cols-3 my-4 px-4 sm:mx-auto'>
-                <Container variants={variants} initial="hidden" animate="visible"
-                 key="111"
-                exit={{ opacity: 0, y: 20 }}>
-                    <div className=' rounded-xl w-full mx-auto py-2'>
-                        <div className='text-3xl '><FaHtml5 className='mx-auto' /></div>
-                        
-                        <p className='mt-2'>HTML5</p>
-                        <p className='mt-2'>Express.js</p>
-                    </div>
-                </Container>
-                <div variants={variants} delay={.1} key="222">
-                    <div className=' rounded-xl w-full mx-auto py-2'>
-                        <div className='text-3xl '><FaCss3 className='mx-auto' /></div>
-                        <p className='mt-2'>CSS3</p>
-                    </div>
-                </div>
-                <div variants={variants} delay={.1} key="222">
-                    <div className=' rounded-xl w-full mx-auto py-2'>
-                        <div className='text-3xl '><FaCss3 className='mx-auto' /></div>
-                        <p className='mt-2'>CSS3</p>
-                    </div>
-                </div>
-                <div variants={variants} delay={.2} key="333">
-                    <div className='rounded-xl w-full mx-auto py-2'>
-                        <div className='text-3xl '><FaJsSquare className='mx-auto' /></div>
-                        <p className='mt-2'>JavaScript (ES6)</p>
-                    </div>
-                </div>
-                <div variants={variants} delay={.3} key="444">
-                    <div className=' rounded-xl w-full mx-auto py-2'>
-                        <div className='text-3xl '><FaReact className='mx-auto' /></div>
-                        <p className='mt-2'>React.js</p>
-                    </div>
-                </div>
-                <div variants={variants} delay={.4} key="555">
-                    <div className=' rounded-xl w-full mx-auto py-2'>
-                        <div className='text-3xl '><BiLogoGit className='mx-auto' /></div>
-                        <p className='mt-2'>Git</p>
-                    </div>
-                </div>
-                <div variants={variants} delay={.5} key="666">
-                    <div className=' rounded-xl w-full mx-auto py-2'>
-                        <div className='text-3xl '><FaGithub className='mx-auto' /></div>
-                        <p className='mt-2'>Github</p>
-                    </div>
-                </div>
-                <div variants={variants} delay={.6} key="777">
-                    <div className=' rounded-xl w-full mx-auto py-2'>
-                        <div className='text-3xl '><FaNpm className='mx-auto' /></div>
-                        <p className='mt-2'>Package Mangers</p>
-                    </div>
-                </div>
-                <div variants={variants} delay={.7} key="888">
-                    <div className=' rounded-xl w-full mx-auto py-2'>
-                        <div className='text-3xl '><FaMobile className='mx-auto' /></div>
-                        <p className='mt-2'>Responsive Designs</p>
-                    </div>
-                </div>
-                <div variants={variants} delay={.8} key="999">
-                    <div className=' rounded-xl w-full mx-auto py-2'>
-                        <div className='text-3xl '><FaNode className='mx-auto' /></div>
-                        <p className='mt-2'>Node.js</p>
-                    </div>
-                </div>
-                <div variants={variants} delay={.9} key="998">
-                    <div className=' rounded-xl w-full mx-auto py-2'>
-                        <div className='text-3xl '><BiLogoMongodb className='mx-auto' /></div>
-                        <p className='mt-2'>Mongodb</p>
-                    </div>
-                </div>
-                <div variants={variants} delay={1} key="997">
-                    <div className=' rounded-xl w-full mx-auto py-2'>
-                        <div className='text-3xl '><SiJsonwebtokens className='mx-auto' /></div>
-                        <p className='mt-2'>JWT</p>
-                    </div>
-                </div>
-                <div variants={variants} delay={1} key="997">
-                    <div className=' rounded-xl w-full mx-auto py-2'>
-                        <div className='text-3xl '><BiLogoTailwindCss className='mx-auto' /></div>
-                        <p className='mt-2'>Tailwind</p>
-                    </div>
-                </div>
-                <div variants={variants} delay={1} key="997">
-                    <div className=' rounded-xl w-full mx-auto py-2'>
-                        <div className='text-3xl '><TbBrandFramerMotion className='mx-auto' /></div>
-                        <p className='mt-2'>framer motion</p>
-                    </div>
-                </div>
-                <div variants={variants} delay={1} key="997">
-                    <div className=' rounded-xl w-full mx-auto py-2'>
-                        <div className='text-3xl '><TbMobiledata className='mx-auto' /></div>
-                        <p className='mt-2'>RESTful API's</p>
-                    </div>
-                </div>
-                <div variants={variants} delay={1} key="997">
-                    <div className=' rounded-xl w-full mx-auto py-2'>
-                        <div className='text-3xl '><GoCommandPalette className='mx-auto' /></div>
-                        <p className='mt-2'>Command line</p>
-                    </div>
-                </div>
-                <div variants={variants} delay={1} key="997">
-                    <div className=' rounded-xl w-full mx-auto py-2'>
-                        <div className='text-3xl '><SiPostgresql className='mx-auto' /></div>
-                        <p className='mt-2'>Postgresql</p>
-                    </div>
-                </div>
-                <div variants={variants} delay={1} key="997">
-                    <div className=' rounded-xl w-full mx-auto py-2'>
-                        <div className='text-3xl '><SiSequelize className='mx-auto' /></div>
-                        <p className='mt-2'>Postgresql</p>
-                    </div>
-                </div>
+        <section id="skills" className="py-24 px-4">
+        <div className='container max-w-5xl text-center mx-auto'>
+            <div className='text-3xl sm:text-4xl mb-8 font-bold'>
+                My <span className=' pl-2 text-primary'>Skills</span>
             </div>
-        </div>
+                <div className="flex flex-wrap justify-center gab-4 mb-12">
+                    {categories.map((category, key) => (
+                        <button
+                        key={key}
+                        onClick={() => setActiveCategory(category)}
+                        >
+                            <div 
+                            className={(
+                                activeCategory === category
+                                ? "bg-primary mx-4 text-white px-5 py-2 rounded-full transition-colors duration-300 capitalize"
+                                : "bg-white dark:bg-transparent mx-4 capitalize"
+                            )}
+                            >
+                        {category}
+                            </div>
+                        </button>
+                    ))}
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-center">
+                {filteredSkills.map((skill, key) => (
+                    <div
+                    key={key}
+                    className="bg-slate-200 dark:bg-slate-950 p-6 rounded-xl hover:scale-105 duration-300 hover:shadow-xl flex flex-col items-center"
+                    >
+                        <div className="text-2xl pl-4 pb-4">{skill.icon}</div>
+                    <div className="text-left mb-4">
+                        <h3 className="font-semibold text-lg"> {skill.name}</h3>
+                    </div>
+                    </div>
+                ))}
+            </div>
+            </div>
+    </section>
     )
 }
 

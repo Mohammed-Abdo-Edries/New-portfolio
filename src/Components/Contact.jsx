@@ -3,9 +3,17 @@ import Title from './Title'
 
 const Contact = () => {
     return (
-        <div id='contact' className='h-96 mx-auto text-center mb-8'>
-            <Title title="Contact Me" /> 
-            <div className="container">
+        <section id='contact' className='py-24 px-4 text-center mb-8'>
+          <div className='text-3xl sm:text-4xl mb-8 font-bold'>
+            Get In <span className='pl-1 text-primary'>Touch</span>
+          </div> 
+          <div className='mb-12 max-w-2xl mx-auto'>
+            Have a project in mind or want to collaborate? Feel free to reach out.
+            I'm always open to discussing new opportunities.
+          </div>
+          <div className='container max-w-5xl text-center mx-auto
+          grid grid-cols-1 md:grid-cols-2 gap-12
+          '>
           <form className="form"
         //    onSubmit={sendEmail}
            >
@@ -27,7 +35,7 @@ const Contact = () => {
             </ul>
           </form>
         </div>
-        </div>
+        </section>
     )
 }
 
