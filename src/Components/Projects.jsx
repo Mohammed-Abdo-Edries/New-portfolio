@@ -4,7 +4,7 @@ import { FiExternalLink } from 'react-icons/fi'
 import { FaArrowRight, FaGithub } from 'react-icons/fa'
 const Projects = () => {
     return (
-        <section id='projects' className='py-24 px-4'>
+        <section id='projects' className='py-24 px-10'>
             <div className='container mx-auto max-w-5xl'>
                 <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-center">
                     {" "}

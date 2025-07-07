@@ -4,7 +4,7 @@ import { FaBriefcase, FaUser, FaCode } from 'react-icons/fa'
 
 const About = () => {
     return (
-        <section id="about" className="py-24 px-4 relative">
+        <section id="about" className="py-24 px-10 relative">
         <div className='container mx-auto max-w-5xl h-fit sm:h-[calc(70vh+0px)]pt-24 text-center'>
             <div className='mb-12 sm:text-4xl font-bold text-3xl'>
                 <span>About</span>
@@ -37,7 +37,7 @@ const About = () => {
                         </div>
                     </div>
                 <div className="grid grid-cols-1 gap-6">
-                    <div className="p-6 hover:scale-105 duration-300 hover:shadow-xl bg-slate-200 dark:bg-slate-950">
+                    <div className="p-6 hover:scale-105 duration-300 rounded-xl hover:shadow-xl bg-slate-200 dark:bg-slate-950">
                     <div className="flex items-start gap-4">
                         <div className="p-3 rounded-full bg-primary/10">
                         <FaCode className='h-6 w-6' />
@@ -51,7 +51,7 @@ const About = () => {
                         </div>
                     </div>
                     </div>
-                    <div className="p-6 hover:scale-105 duration-300 hover:shadow-xl bg-slate-200 dark:bg-slate-950">
+                    <div className="p-6 hover:scale-105 duration-300 rounded-xl hover:shadow-xl bg-slate-200 dark:bg-slate-950">
                     <div className="flex items-start gap-4">
                         <div className="p-3 rounded-full bg-primary/10">
                         <FaUser className='h-6 w-6'/>
@@ -65,7 +65,7 @@ const About = () => {
                         </div>
                     </div>
                     </div>
-                    <div className="p-6 hover:scale-105 duration-300 hover:shadow-xl bg-slate-200 dark:bg-slate-950">
+                    <div className="p-6 hover:scale-105 duration-300 rounded-xl hover:shadow-xl bg-slate-200 dark:bg-slate-950">
                     <div className="flex items-start gap-4">
                         <div className="p-3 rounded-full bg-primary/10">
                         <FaBriefcase className='h-6 w-6'/>

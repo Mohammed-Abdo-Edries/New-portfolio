@@ -37,7 +37,7 @@ const categories = ["all", "frontend", "backend", "tools"];
     (skill) => activeCategory === "all" || skill.category === activeCategory
   );
     return (
-        <section id="skills" className="py-24 px-4">
+        <section id="skills" className="py-24 px-10">
         <div className='container max-w-5xl text-center mx-auto'>
             <div className='text-3xl sm:text-4xl mb-8 font-bold'>
                 My <span className=' pl-2 text-primary'>Skills</span>
