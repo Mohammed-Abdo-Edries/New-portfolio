@@ -1,10 +1,25 @@
-import React from 'react'
+import React,{ useRef } from 'react'
 import Title from './Title'
+import emailjs from '@emailjs/browser'
 import {MdOutlineMail} from 'react-icons/md'
 import { FiMapPin, FiPhone } from 'react-icons/fi'
 import { FaInstagram, FaLinkedin } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
+import { TbBrandTelegram } from 'react-icons/tb'
 const Contact = () => {
+  const form = useRef()
+  const sendEmail = (e) => {
+    e.preventDefault();
+    emailjs.sendForm('service_yutqxp8', 'template_7ukvip4', form.current, 'vEjBKvvVFAosxOS7A')     
+      .then((result) => {
+          window.location.reload(false)
+          alert("Message Successfully sent!")
+          e.preventDefault();
+      }, (error) => {
+          alert("Failed to Send Message")
+      }
+    )
+  }
     return (
         <section id='contact' className='py-24 text-center mb-8'>
           <div className='container px-10'>
@@ -27,44 +42,44 @@ const Contact = () => {
 
             <div className="justify-center">
               <div className="flex items-start my-6 py-2 px-4 hover:scale-105 duration-300
-               bg-slate-200 dark:bg-slate-950 rounded-xl">
+               bg-slate-200 dark:bg-slate-800 rounded-xl">
                 <div className="px-4 py-4">
                   <MdOutlineMail className='text-primary text-2xl'/>
                 </div>
                 <div>
                   <h4 className="font-medium"> Email</h4>
                   <a
-                    href="mailto:hello@gmail.com"
-                    className="hover:text-primary transition-colors"
+                    href="mailto:mohammed.abdo1916@gmail.com"
+                    className="text-sm sm:text-base hover:text-primary transition-colors"
                   >
-                    hello@gmail.com
+                    mohammed.abdo1916@gmail.com
                   </a>
                 </div>
               </div>
               <div className="flex items-start my-4 py-2 px-4 hover:scale-105 duration-300
-               bg-slate-200 dark:bg-slate-950 rounded-xl">
+               bg-slate-200 dark:bg-slate-800 rounded-xl">
                   <div className='px-4 py-4'>
                   <FiPhone className='text-primary text-2xl' />
                   </div>
                 <div>
                   <h4 className="font-medium"> Phone</h4>
                   <a
-                    href="tel:+11234567890"
+                    href="tel:+249112408191"
                     className="hover:text-primary transition-colors"
                   >
-                    +1 (123) 456-7890
+                    +249 112 40 8191
                   </a>
                 </div>
               </div>
               <div className="flex items-start my-4 py-2 px-4 hover:scale-105 duration-300
-              bg-slate-200 dark:bg-slate-950 rounded-xl">
+              bg-slate-200 dark:bg-slate-800 rounded-xl">
                   <div className='px-4 py-4'>
                   <FiMapPin className='text-primary text-2xl'/>
                   </div>
                 <div>
                   <h4 className="font-medium"> Location</h4>
                   <a className="hover:text-primary transition-colors">
-                    Vancouver, BC, Canada
+                    Kassla, Sudan
                   </a>
                 </div>
               </div>
@@ -73,13 +88,13 @@ const Contact = () => {
             <div className="pt-8">
               <h4 className="font-medium mb-4"> Connect With Me</h4>
               <div className="flex space-x-4 justify-center text-2xl">
-                <a href="#" target="_blank">
+                <a href="https://www.linkedin.com/in/mohammed-abdo-92249a247" target="_blank" rel="noopener noreferrer" >
                   <FaLinkedin />
                 </a>
-                <a href="#" target="_blank">
+                <a href="https://x.com/Mohamme05936302?t=99PLgceH8BqbQCXSaUH77w&s=09" target="_blank" rel="noopener noreferrer" >
                   <FaXTwitter />
                 </a>
-                <a href="#" target="_blank">
+                <a href="https://www.instagram.com/moha_abdo4?igsh=cjFnZzFyand1Z3px" target="_blank" rel="noopener noreferrer" >
                   <FaInstagram />
                 </a>
               </div>
@@ -87,7 +102,8 @@ const Contact = () => {
           </div>
           </div>
 
-                  <form className="px-8 pt-8 pb-10 rounded-lg shadow-xs bg-slate-200 dark:bg-slate-950 transition-colors"
+                  <form className="px-8 pt-8 pb-10 rounded-lg shadow-xs bg-slate-200 dark:bg-slate-800 
+                  transition-colors" ref={form} onSubmit={sendEmail}
                 //    onSubmit={sendEmail}
                   >
                     <h3 className='text-2xl font-semibold mb-6'>Send a Message</h3>
@@ -120,8 +136,8 @@ const Contact = () => {
                         focus:outline-none" 
                         name="message" required></textarea>
                       </div>
-                        <button type="submit" className='w-full bg-primary py-2 rounded-3xl text-white hover:scale-105 duration-300' >
-                          Send Message
+                        <button type="submit" className='flex justify-center w-full bg-primary py-2 rounded-3xl text-white hover:scale-105 duration-300' >
+                        Send Message <span className='ml-2 text-xl pt-1'><TbBrandTelegram /> </span> 
                            </button>
                   </form>
 

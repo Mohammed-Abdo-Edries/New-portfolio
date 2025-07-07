@@ -29,7 +29,7 @@ const About = () => {
                             </a>
 
                             <a
-                                href=""
+                                href="/public/cv.pdf"
                                 className="px-6 py-2 rounded-full border-2 border-primary text-primary hover:bg-primary hover:text-white duration-300"
                             >
                                 Download CV
@@ -37,7 +37,7 @@ const About = () => {
                         </div>
                     </div>
                 <div className="grid grid-cols-1 gap-6">
-                    <div className="p-6 hover:scale-105 duration-300 rounded-xl hover:shadow-xl bg-slate-200 dark:bg-slate-950">
+                    <div className="p-6 hover:scale-105 duration-300 rounded-xl hover:shadow-xl bg-slate-200 dark:bg-slate-800">
                     <div className="flex items-start gap-4">
                         <div className="p-3 rounded-full bg-primary/10">
                         <FaCode className='h-6 w-6' />
@@ -51,7 +51,7 @@ const About = () => {
                         </div>
                     </div>
                     </div>
-                    <div className="p-6 hover:scale-105 duration-300 rounded-xl hover:shadow-xl bg-slate-200 dark:bg-slate-950">
+                    <div className="p-6 hover:scale-105 duration-300 rounded-xl hover:shadow-xl bg-slate-200 dark:bg-slate-800">
                     <div className="flex items-start gap-4">
                         <div className="p-3 rounded-full bg-primary/10">
                         <FaUser className='h-6 w-6'/>
@@ -65,7 +65,7 @@ const About = () => {
                         </div>
                     </div>
                     </div>
-                    <div className="p-6 hover:scale-105 duration-300 rounded-xl hover:shadow-xl bg-slate-200 dark:bg-slate-950">
+                    <div className="p-6 hover:scale-105 duration-300 rounded-xl hover:shadow-xl bg-slate-200 dark:bg-slate-800">
                     <div className="flex items-start gap-4">
                         <div className="p-3 rounded-full bg-primary/10">
                         <FaBriefcase className='h-6 w-6'/>

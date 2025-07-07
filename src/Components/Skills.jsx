@@ -64,7 +64,7 @@ const categories = ["all", "frontend", "backend", "tools"];
                 {filteredSkills.map((skill, key) => (
                     <div
                     key={key}
-                    className="bg-slate-200 dark:bg-slate-950 p-6 rounded-xl hover:scale-105 duration-300 hover:shadow-xl flex flex-col items-center"
+                    className="bg-slate-200 dark:bg-slate-800 p-6 rounded-xl hover:scale-105 duration-300 hover:shadow-xl flex flex-col items-center"
                     >
                         <div className="text-2xl pl-4 pb-4">{skill.icon}</div>
                     <div className="text-left mb-4">
