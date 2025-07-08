@@ -18,14 +18,14 @@ export default {
         fadeIn:{
           '0%': {opacity: '0'},
           '100%' : {opacity: '1'}
-        }, slideInUp:{
-        '0%': {opacity: '0', transform: 'translateY(30px)'},
+        }, slideInDown:{
+        '0%': {opacity: '0', transform: 'translateY(-30px)'},
         '100%' : {opacity: '1', transform: 'translateY(0px)'}
         }
       },
       animation: {
         fadeIn: 'fadeIn 0.7s ease-in-out forwards',
-        slideInUp: 'slideInUp 0.7s ease-in-out forwards'
+        slideInDown: 'slideInDown 0.7s ease-in-out forwards'
       }
     }
   },

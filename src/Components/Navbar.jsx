@@ -63,21 +63,21 @@ const Navbar = () => {
             </AnimatePresence>
           }
                 <Popup trigger={<button><GiHamburgerMenu className='ml-2 sm:hidden'/></button>} closeOnDocumentClick position={"bottom right"}>
-                    <ul className='w-60 rounded-md bg-blue-700 text-white dark:bg-white dark:text-black'>
-                        <li className='pb-2 hover:pl-6 pt-2 border-stone-400 pl-4 border-b-2'>
+                    <ul className='w-60 rounded-md bg-white dark:bg-slate-950 dark:text-white animate-slideInDown'>
+                        <li className='pb-2 hover:pl-6 pl-4 py-2 border-slate-300 border-b-2'>
+                            <a key={"home"} href="#home">Home</a>
+                        </li>
+                        <li className='pb-2 hover:pl-6 pl-4 py-2 border-slate-300 border-b-2'>
+                            <a key={"about"} href="#about">About Me</a>
+                        </li>
+                        <li className='pb-2 hover:pl-6 pt-2 border-slate-300 pl-4 border-b-2'>
                             <a key={"skills"} href="#skills">Skills</a>
                         </li>
-                        <li className='pb-2 hover:pl-6 py-2 border-stone-400 pl-4 border-b-2'>
-                            <a key={"projects"} href="#projects">Projects</a>
+                        <li className='pb-2 hover:pl-6 py-2 border-slate-300 pl-4 border-b-2'>
+                            <a key={"projects"} href="#projects">My Projects</a>
                         </li>
                         <li className='pb-2 hover:pl-6 pl-4 py-2'>
-                            <a key={"contact"} href="#contact">Contact</a>
-                        </li>
-                        <li className='pb-2 hover:pl-6 pl-4 py-2'>
-                            <a key={"about"} href="#about">about</a>
-                        </li>
-                        <li className='pb-2 hover:pl-6 pl-4 py-2'>
-                            <a key={"home"} href="#home">Home</a>
+                            <a key={"contact"} href="#contact">Contact Me</a>
                         </li>
                     </ul>
                 </Popup>

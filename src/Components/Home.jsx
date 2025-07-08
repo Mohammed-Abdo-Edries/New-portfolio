@@ -6,6 +6,7 @@ import { CiMail } from "react-icons/ci"
 import Container from './Container'
 import Title from './Title'
 import ScrollAnimation from './Animation'
+import myImage from '../../IMG.jpg'
 const Home = () => {
     const variants = {
         hidden: { opacity: 0 },
@@ -20,9 +21,9 @@ const Home = () => {
     return (
         <section id="home" className="py-24 px-10 relative">
         <div className='container dark:bg-black text-center sm:h-[calc(90vh+0px)]text-xl max-w-full' >
-            <img src="/IMG.jpg" className='w-80 h-80 mx-auto border-2 border-black rounded-full' alt="" />
+            <img src={myImage} className='w-80 h-80 mx-auto border-2 border-black rounded-full' alt="" />
             <div className='flex justify-center my-2 sm:text-6xl font-bold text-3xl'> 
-            <span  key='123' className='pr-4'>Hi, I'm</span>
+            <div  className='pr-4 whitespace-nowrap'>Hi, I'm</div>
             <span  className='pr-4 text-primary'>Mohamed</span>
             <span  className=''>Abdo</span>
             </div>
