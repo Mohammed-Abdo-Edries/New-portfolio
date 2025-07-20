@@ -8,18 +8,18 @@ import { FaXTwitter } from 'react-icons/fa6'
 import { TbBrandTelegram } from 'react-icons/tb'
 const Contact = () => {
   const form = useRef()
-  // const sendEmail = (e) => {
-  //   e.preventDefault();
-  //   emailjs.sendForm('service_yutqxp8', 'template_7ukvip4', form.current, 'vEjBKvvVFAosxOS7A')     
-  //     .then((result) => {
-  //         window.location.reload(false)
-  //         alert("Message Successfully sent!")
-  //         e.preventDefault();
-  //     }, (error) => {
-  //         alert("Failed to Send Message")
-  //     }
-  //   )
-  // }
+  const sendEmail = (e) => {
+    e.preventDefault();
+    emailjs.sendForm('service_yutqxp8', 'template_7ukvip4', form.current, 'vEjBKvvVFAosxOS7A')     
+      .then((result) => {
+          window.location.reload(false)
+          alert("Message Successfully sent!")
+          e.preventDefault();
+      }, (error) => {
+          alert("Failed to Send Message")
+      }
+    )
+  }
     return (
         <section id='contact' className='py-24 text-center'>
           <div className='container px-10'>
@@ -104,7 +104,7 @@ const Contact = () => {
 
                   <form className="px-8 pt-8 pb-10 rounded-lg shadow-xs bg-slate-200 dark:bg-slate-800 
                   transition-colors" ref={form} 
-                //    onSubmit={sendEmail}
+                   onSubmit={sendEmail}
                   >
                     <h3 className='text-2xl font-semibold mb-6'>Send a Message</h3>
                     {/* <ul className='list-unstyled'> */}
