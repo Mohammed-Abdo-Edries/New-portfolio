@@ -2,7 +2,6 @@ import Popup from 'reactjs-popup'
 import { useState, useEffect } from 'react'
 import {GiHamburgerMenu} from "react-icons/gi"
 import {BsSunFill, BsFillMoonStarsFill} from "react-icons/bs"
-import { Link } from 'react-router-dom'
 import { AnimatePresence,motion } from 'framer-motion'
 const Navbar = () => {
     const [theme, setTheme] = useState("light")

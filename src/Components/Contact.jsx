@@ -1,12 +1,64 @@
-import React,{ useRef } from 'react'
-import Title from './Title'
+// import Title from './Title'
 import emailjs from '@emailjs/browser'
 import {MdOutlineMail} from 'react-icons/md'
 import { FiMapPin, FiPhone } from 'react-icons/fi'
 import { FaInstagram, FaLinkedin } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 import { TbBrandTelegram } from 'react-icons/tb'
+import { useEffect,useRef } from "react"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+gsap.registerPlugin(ScrollTrigger);
 const Contact = () => {
+  const titleRef = useRef(null);
+const paragraphRef = useRef(null);
+   useEffect(() => {
+    gsap.fromTo(
+      titleRef.current,
+      { opacity: 0, y: -30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: "top 80%",
+          toggleActions: "restart none restart none",
+        },
+      }
+    );
+    gsap.fromTo(
+      paragraphRef.current,
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        delay: 0.2,
+        scrollTrigger: {
+          trigger: paragraphRef.current,
+          start: "top 85%",
+          toggleActions: "restart none restart none",
+        },
+      }
+    );
+    gsap.utils.toArray(".card").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: el,
+            start: "top 80%",
+            toggleActions: "restart none restart none",
+          },
+        }
+      );
+    });
+  }, []);
   const form = useRef()
   const sendEmail = (e) => {
     e.preventDefault();
@@ -23,10 +75,10 @@ const Contact = () => {
     return (
         <section id='contact' className='py-24 text-center'>
           <div className='container px-10'>
-          <div className='text-3xl sm:text-4xl mb-8 font-bold'>
+          <div ref={titleRef} className='text-3xl sm:text-4xl mb-8 font-bold'>
             Get In <span className='pl-1 text-primary'>Touch</span>
           </div> 
-          <div className='mb-8 max-w-2xl mx-auto text-lg'>
+          <div ref={paragraphRef} className='mb-8 max-w-2xl mx-auto text-lg'>
             Have a project in mind or want to collaborate? Feel free to reach out.
             I'm always open to discussing new opportunities.
           </div>
@@ -41,7 +93,7 @@ const Contact = () => {
             </h3>
 
             <div className="justify-center">
-              <div className="flex items-start my-6 py-2 px-4 hover:scale-105 duration-300
+              <div className="card flex items-start border-2 border-primary my-6 py-2 px-4 hover:scale-105 duration-300
                bg-slate-200 dark:bg-slate-800 rounded-xl">
                 <div className="px-4 py-4">
                   <MdOutlineMail className='text-primary text-2xl'/>
@@ -56,7 +108,7 @@ const Contact = () => {
                   </a>
                 </div>
               </div>
-              <div className="flex items-start my-4 py-2 px-4 hover:scale-105 duration-300
+              <div className="card flex items-start border-2 border-primary my-4 py-2 px-4 hover:scale-105 duration-300
                bg-slate-200 dark:bg-slate-800 rounded-xl">
                   <div className='px-4 py-4'>
                   <FiPhone className='text-primary text-2xl' />
@@ -71,7 +123,7 @@ const Contact = () => {
                   </a>
                 </div>
               </div>
-              <div className="flex items-start my-4 py-2 px-4 hover:scale-105 duration-300
+              <div className="card flex items-start border-2 border-primary my-4 py-2 px-4 hover:scale-105 duration-300
               bg-slate-200 dark:bg-slate-800 rounded-xl">
                   <div className='px-4 py-4'>
                   <FiMapPin className='text-primary text-2xl'/>
@@ -102,13 +154,11 @@ const Contact = () => {
           </div>
           </div>
 
-                  <form className="px-8 pt-8 pb-10 rounded-lg shadow-xs bg-slate-200 dark:bg-slate-800 
+                  <form className="card px-8 pt-8 pb-10 border-2 border-primary rounded-lg shadow-xs bg-slate-200 dark:bg-slate-800 
                   transition-colors" ref={form} 
                    onSubmit={sendEmail}
                   >
                     <h3 className='text-2xl font-semibold mb-6'>Send a Message</h3>
-                    {/* <ul className='list-unstyled'> */}
-                      {/* <div className="row"> */}
                       <div className=''>
                         <label htmlFor="name" className='block text-sm font-medium mb-2'>
                           Your Name
@@ -125,7 +175,6 @@ const Contact = () => {
                         focus:outline-none  rounded-md"
                          name="email" placeholder="Email" required/>
                       </div>
-                      {/* </div> */}
                       <div className='mb-4'>
                         <label htmlFor="message"
                         className='block text-sm font-medium mb-2'>

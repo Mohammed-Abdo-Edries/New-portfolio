@@ -3,10 +3,61 @@ import { BiLogoGit, BiLogoMongodb, BiLogoTailwindCss } from "react-icons/bi"
 import { useState } from "react"
 import { SiJsonwebtokens,SiSequelize, SiPostgresql } from "react-icons/si"
 import { TbBrandFramerMotion, TbMobiledata, TbBrandNextjs } from "react-icons/tb"
-// import { GoCommandPalette } from "react-icons/go"
-// import Container from "./Container"
+import { useEffect,useRef } from "react"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+gsap.registerPlugin(ScrollTrigger);
 // import Title from "./Title"
 const Skills = () => {
+     const titleRef = useRef(null);
+  const paragraphRef = useRef(null);
+  useEffect(() => {
+    gsap.fromTo(
+      titleRef.current,
+      { opacity: 0, y: -30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: "top 80%",
+          toggleActions: "restart none restart none",
+        },
+      }
+    );
+    gsap.fromTo(
+      paragraphRef.current,
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        delay: 0.2,
+        scrollTrigger: {
+          trigger: paragraphRef.current,
+          start: "top 85%",
+          toggleActions: "restart none restart none",
+        },
+      }
+    );
+    gsap.utils.toArray(".skill-card").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: el,
+            start: "top 80%",
+            toggleActions: "restart none restart none",
+          },
+        }
+      );
+    });
+  }, []);
     const skills = [
   { name: "HTML", icon: <FaHtml5 /> , category: "frontend" },
   { name: "JavaScript", icon: <FaJsSquare /> , category: "frontend" },
@@ -39,10 +90,10 @@ const categories = ["all", "frontend", "backend", "tools"];
     return (
         <section id="skills" className="py-24 px-10">
         <div className='container max-w-5xl text-center mx-auto'>
-            <div className='text-3xl sm:text-4xl mb-8 font-bold'>
+            <div ref={titleRef} className='text-3xl sm:text-4xl mb-8 font-bold'>
                 My <span className=' pl-2 text-primary'>Skills</span>
             </div>
-                <div className="flex flex-wrap justify-center gab-4 mb-12">
+                <div ref={paragraphRef} className="flex flex-wrap justify-center gab-4 mb-12">
                     {categories.map((category, key) => (
                         <button
                         key={key}
@@ -62,9 +113,9 @@ const categories = ["all", "frontend", "backend", "tools"];
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-center">
                 {filteredSkills.map((skill, key) => (
-                    <div
+                    <div 
                     key={key}
-                    className="bg-slate-200 dark:bg-slate-800 p-6 rounded-xl hover:scale-105 duration-300 hover:shadow-xl flex flex-col items-center"
+                    className="skill-card bg-slate-200 dark:bg-slate-800 p-6 rounded-xl border-2 border-primary hover:scale-105 duration-300 hover:shadow-xl flex flex-col items-center"
                     >
                         <div className="text-2xl pl-4 pb-4">{skill.icon}</div>
                     <div className="text-left mb-4">
