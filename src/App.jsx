@@ -7,8 +7,22 @@ import Contact from './Components/Contact'
 import About from './Components/About'
 import { BrowserRouter } from 'react-router-dom'
 import { Footer } from './Components/footer'
-function App() {
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 
+function App() {
+  const maxHeight = 300;
+gsap.registerPlugin(ScrollTrigger);
+gsap.to("#scroll-progress-vertical", {
+ height: maxHeight, 
+  ease: "none", 
+  scrollTrigger: {
+    trigger: "body", 
+    start: "top top", 
+    end: "bottom bottom", 
+    scrub: true,
+  }
+});
   return (
     <BrowserRouter>
     <div className="bg-white dark:bg-black dark:text-white rounded-xl">

@@ -12,7 +12,7 @@ const paragraphRef = useRef(null);
    useEffect(() => {
     gsap.fromTo(
       titleRef.current,
-      { opacity: 0, y: -30 },
+      { opacity: 0, y: 30 },
       {
         opacity: 1,
         y: 0,
@@ -65,9 +65,9 @@ const paragraphRef = useRef(null);
                     My <span className="text-primary"> Projects </span>
                 </h2>
                 <div className='text-center sm:flex'>
-                    {/* <div className="overflow-hidden shadow-xs py-4 px-4 rounded-lg sm:mr-12
-                    bg-slate-200 dark:bg-slate-800 hover:scale-105 duration-300"> */}
-                        {/* <div className='py-8 px-2'>
+                    <div ref={paragraphRef} className="overflow-hidden shadow-xs py-4 px-4 rounded-lg sm:mr-12
+                    bg-slate-200 dark:bg-slate-800 hover:scale-105 duration-300">
+                         <div className='py-8 px-2'>
                             <div className='text-xs'>
                                 <span className='mr-2 px-2 py-1 border-2 border-slate-500 rounded-2xl'>Next.js</span>
                                 <span className='mr-2 px-2 py-1 border-2 border-slate-500 rounded-2xl'>Node.js</span>
@@ -81,12 +81,12 @@ const paragraphRef = useRef(null);
                                 
                             </p>
                             <div className='flex text-xl'> 
-                            <a href="https://luxury-t0tu.onrender.com" target="_blank" className='pr-2' 
+                            <a href="https://facebook-clone-chi-one.vercel.app.com" target="_blank" className='pr-2' 
                             rel="noopener noreferrer"><FiExternalLink /></a>
                             <a href="https://github.com/Mohammed-Abdo-Edries/Facebook-front" target='_blank' rel='noopener noreferrer' ><FaGithub /> </a>
                                 </div>
-                        </div> */}
-                        {/* </div> */}
+                        </div>
+                        </div> 
                         <div ref={paragraphRef} className="overflow-hidden shadow-xs border-2 border-primary rounded-lg mt-8 sm:mt-0
                         bg-slate-200 dark:bg-slate-800 hover:scale-105 duration-300">
                             <div className='h-48 overflow-hidden'>

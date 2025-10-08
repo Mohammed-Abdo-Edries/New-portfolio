@@ -12,3 +12,11 @@
       background-color: hsl(var(--primary))
     }
 }
+.scroll-gradient {
+    background: linear-gradient(to right, #8b5cf6, #3b82f6); 
+}
+.email-vertical {
+    writing-mode: sideways-lr;
+    transform: rotate(180deg);
+    white-space: nowrap;
+}

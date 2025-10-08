@@ -3,13 +3,11 @@ import { FaLinkedin } from "react-icons/fa"
 import { CiMail } from "react-icons/ci"
 import { useEffect,useRef } from "react"
 import gsap from "gsap"
-// import Title from './Title'
-import { ScrollTrigger } from "gsap/ScrollTrigger"
 import myImage from '../../IMG.jpg'
-gsap.registerPlugin(ScrollTrigger);
 const Home = () => {
     const titleRef = useRef(null);
   const paragraphRef = useRef(null);
+  
   useEffect(() => {
     gsap.fromTo(
       titleRef.current,

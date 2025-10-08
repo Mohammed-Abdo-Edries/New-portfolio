@@ -14,7 +14,7 @@ const Skills = () => {
   useEffect(() => {
     gsap.fromTo(
       titleRef.current,
-      { opacity: 0, y: -30 },
+      { opacity: 0, y: 30 },
       {
         opacity: 1,
         y: 0,

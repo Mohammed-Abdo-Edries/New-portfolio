@@ -11,7 +11,7 @@ const boxRef = useRef(null);
   useEffect(() => {
     gsap.fromTo(
       boxRef.current,
-      { opacity: 0, y: -30 },
+      { opacity: 0, y: 30 },
       {
         opacity: 1,
         y: 0,
@@ -25,7 +25,7 @@ const boxRef = useRef(null);
     );
     gsap.fromTo(
       titleRef1.current,
-      { opacity: 0, y: -30 },
+      { opacity: 0, y: 30 },
       {
         opacity: 1,
         y: 0,
