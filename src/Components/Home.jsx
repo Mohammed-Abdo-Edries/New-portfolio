@@ -57,7 +57,7 @@ const Home = () => {
   }, []);
     return (
         <section id="home" className="py-24 px-10 relative">
-        <div className='container dark:bg-black text-center sm:h-[calc(90vh+0px)]text-xl max-w-full' >
+        <div className='container text-center sm:h-[calc(90vh+0px)]text-xl max-w-full' >
             <img src={myImage} className='w-80 h-80 mx-auto border-2 border-black rounded-full' alt="" />
             <div ref={titleRef} className='flex justify-center my-2 sm:text-6xl font-bold text-3xl'> 
             <div  className='pr-4 whitespace-nowrap'>Hi, I'm</div>

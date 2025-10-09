@@ -1,19 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 :root {
-    --primary: 250 47% 60%;
+    --primary: "#204D389";
 }
 @layer utilities{
     .text-primary{
-      color: hsl(var(--primary))
+      color: #04D389
     }
     .bg-primary{
-      background-color: hsl(var(--primary))
+      background-color: #04D389
     }
 }
+
+.btn-color{
+  background: #04D389;
+}
 .scroll-gradient {
-    background: linear-gradient(to right, #8b5cf6, #3b82f6); 
+    background: linear-gradient( #04D389); 
 }
 .email-vertical {
     writing-mode: sideways-lr;

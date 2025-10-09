@@ -103,7 +103,7 @@ const categories = ["all", "frontend", "backend", "tools"];
                             className={(
                                 activeCategory === category
                                 ? "bg-primary mx-4 text-white px-5 py-2 rounded-full transition-colors duration-300 capitalize"
-                                : "bg-white dark:bg-transparent mx-4 capitalize"
+                                : "bg-white dark:bg-transparent mx-4 px-5 py-2 rounded-full capitalize"
                             )}
                             >
                         {category}

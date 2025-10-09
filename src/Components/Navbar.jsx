@@ -30,7 +30,7 @@ const Navbar = () => {
                     <a className='pl-4 hover:text-primary transition-colors duration-300' href="#projects">Projects</a>
                     <a className='pl-4 hover:text-primary transition-colors duration-300' href="#contact">Contact</a>
                   </div>
-                {theme === 'dark' ?
+                {/* {theme === 'dark' ?
             <AnimatePresence mode='wait' >
               {theme === "dark" && (
                 <motion.button key='sun' variants={variants} initial='hidden'
@@ -60,7 +60,7 @@ const Navbar = () => {
                 </motion.button>
               )}
             </AnimatePresence>
-          }
+          } */}
                 <Popup trigger={<button><GiHamburgerMenu className='ml-2 sm:hidden'/></button>} closeOnDocumentClick position={"bottom right"}>
                     <ul className='w-60 rounded-md bg-white dark:bg-slate-950 dark:text-white animate-slideInDown'>
                         <li className='pb-2 hover:pl-6 pl-4 py-2 border-slate-300 border-b-2'>
