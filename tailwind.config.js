@@ -29,7 +29,7 @@ export default {
       }
     }
   },
-  darkMode: 'class',
+  darkMode: '',
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",

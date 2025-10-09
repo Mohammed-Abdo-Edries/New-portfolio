@@ -8,6 +8,7 @@ import { TbBrandTelegram } from 'react-icons/tb'
 import { useEffect,useRef } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import toast,{Toaster} from 'react-hot-toast'
 gsap.registerPlugin(ScrollTrigger);
 const Contact = () => {
   const titleRef = useRef(null);
@@ -65,10 +66,10 @@ const paragraphRef = useRef(null);
     emailjs.sendForm('service_yutqxp8', 'template_7ukvip4', form.current, 'vEjBKvvVFAosxOS7A')     
       .then((result) => {
           window.location.reload(false)
-          alert("Message Successfully sent!")
+          toast.success("Message Successfully sent!")
           e.preventDefault();
       }, (error) => {
-          alert("Failed to Send Message")
+          toast.error("Failed to Send Message", error)
       }
     )
   }
@@ -189,7 +190,7 @@ const paragraphRef = useRef(null);
                         Send Message <span className='ml-2 text-xl pt-1'><TbBrandTelegram /> </span> 
                            </button>
                   </form>
-
+                <Toaster />
         </div>
         </div>
         </section>
