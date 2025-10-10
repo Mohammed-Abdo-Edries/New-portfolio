@@ -15,9 +15,10 @@ function App() {
   const [init, setInit] = useState(false);
   const maxHeight = 300;
     gsap.registerPlugin(ScrollTrigger);
-    gsap.to("#scroll-progress-vertical", {
-      height: maxHeight, 
-      ease: "none", 
+    useEffect(() => {
+      gsap.to("#scroll-progress-vertical", {
+        height: maxHeight, 
+        ease: "none", 
       scrollTrigger: {
         trigger: "body", 
         start: "top top", 
@@ -25,6 +26,12 @@ function App() {
         scrub: true,
       }
     });
+    const timeout = setTimeout(() => {
+      ScrollTrigger.refresh(true);
+    },500);
+    return () => 
+      clearTimeout(timeout);
+  },[])
      useEffect(() => {
     initParticlesEngine(async (engine) => {
       await loadSlim(engine);

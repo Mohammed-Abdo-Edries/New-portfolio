@@ -36,7 +36,7 @@ const Skills = () => {
         delay: 0.2,
         scrollTrigger: {
           trigger: paragraphRef.current,
-          start: "top 85%",
+          start: "top bottom-=50",
           toggleActions: "restart none restart none",
         },
       }
@@ -103,7 +103,7 @@ const categories = ["all", "frontend", "backend", "tools"];
                             className={(
                                 activeCategory === category
                                 ? "bg-primary mx-4 text-white px-5 py-2 rounded-full transition-colors duration-300 capitalize"
-                                : "bg-white dark:bg-transparent mx-4 px-5 py-2 rounded-full capitalize"
+                                : "bg-white dark:bg-transparent mx-4 px-5 py-2 rounded-full capitalize mt-4 sm:mt-0"
                             )}
                             >
                         {category}

@@ -35,7 +35,7 @@ const paragraphRef = useRef(null);
         delay: 0.2,
         scrollTrigger: {
           trigger: paragraphRef.current,
-          start: "top 85%",
+          start: "top bottom-=50",
           toggleActions: "restart none restart none",
         },
       }
@@ -66,29 +66,7 @@ const paragraphRef = useRef(null);
                     My <span className="text-primary"> Projects </span>
                 </h2>
                 <div className='text-center sm:flex'>
-                    {/* <div ref={paragraphRef} className="overflow-hidden shadow-xs py-4 px-4 rounded-lg sm:mr-12
-                    bg-slate-200 dark:bg-slate-800 hover:scale-105 duration-300">
-                         <div className='py-8 px-2'>
-                          <div className='h-48 overflow-hidden'>
-                            <img className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-110' src={myImage2} alt="" />
-                            </div>
-                            <div className='text-xs'>
-                                <span className='mr-2 px-2 py-1 border-2 border-slate-500 rounded-2xl'>Next.js</span>
-                                <span className='mr-2 px-2 py-1 border-2 border-slate-500 rounded-2xl'>Node.js</span>
-                                <span className='mr-2 px-2 py-1 border-2 border-slate-500 rounded-2xl'>MongoDB</span>
-                                <span className='px-2 py-1 border-2 border-slate-500 rounded-2xl'>JWT</span>
-                            </div>
-                            <h3 className='py-4 font-semibold text-xl'>
-                            Facebook clone
-                            </h3> 
-                            <div className='flex text-xl'> 
-                            <a href="https://facebook-clone-chi-one.vercel.app.com" target="_blank" className='pr-2' 
-                            rel="noopener noreferrer"><FiExternalLink /></a>
-                            <a href="https://github.com/Mohammed-Abdo-Edries/Facebook-front" target='_blank' rel='noopener noreferrer' ><FaGithub /> </a>
-                                </div>
-                        </div>
-                        </div>  */}
-                        <div ref={paragraphRef} className="overflow-hidden shadow-xs border-2 border-primary rounded-lg mt-8 sm:mr-8
+                        <div ref={paragraphRef} className="overflow-hidden shadow-xs border-2 border-primary rounded-lg sm:mr-8
                         bg-slate-200 dark:bg-slate-800 hover:scale-105 duration-300">
                             <div className='h-60 overflow-hidden'>
                             <img className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-110' src={myImage2} alt="" />
@@ -102,10 +80,10 @@ const paragraphRef = useRef(null);
                             <span className='px-2 py-1 border-2 border-slate-400 rounded-2xl'>JWT</span>
                         </div>
                         <h3 className='py-4 font-semibold text-xl'>
-                        ecommerce website
+                        facebook clone
                         </h3>
                         <p className='pb-4'>
-                        an e-commerce platform with user authentication
+                        a facebook clone with chat app and user authentication
                         </p>
                         <div className='flex text-xl'>
                         <a href="https://facebook-clone-chi-one.vercel.app" className='pr-2' target="_blank" 
@@ -132,7 +110,7 @@ const paragraphRef = useRef(null);
                         ecommerce website
                         </h3>
                         <p className='pb-4'>
-                        an e-commerce platform with user authentication
+                        an e-commerce platform with user authentication and shopping cart
                         </p>
                         <div className='flex text-xl'>
                         <a href="https://luxury-pink.vercel.app" className='pr-2' target="_blank" 

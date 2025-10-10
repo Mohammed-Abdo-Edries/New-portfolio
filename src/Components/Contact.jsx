@@ -53,7 +53,7 @@ const paragraphRef = useRef(null);
           duration: 0.8,
           scrollTrigger: {
             trigger: el,
-            start: "top 80%",
+            start: "top bottom-=50",
             toggleActions: "restart none restart none",
           },
         }
@@ -74,7 +74,7 @@ const paragraphRef = useRef(null);
     )
   }
     return (
-        <section id='contact' className='py-24 text-center'>
+        <section id='contact' className='pt-24 pb-8 text-center'>
           <div className='container px-10'>
           <div ref={titleRef} className='text-3xl sm:text-4xl mb-8 font-bold'>
             Get In <span className='pl-1 text-primary'>Touch</span>
