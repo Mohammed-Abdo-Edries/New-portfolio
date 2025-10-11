@@ -135,6 +135,17 @@ function App() {
   );
   return (
     <BrowserRouter>   
+    <div
+    id="scroll-progress-vertical"
+  class="fixed right-6 sm:right-8 top-1/3 sm:top-1/4 w-2 sm:w-2 h-0 scroll-gradient rounded-xl z-50 transition-all duration-100 ease-out"
+></div>
+
+<div id="email" class="fixed left-6 sm:left-8 bottom-96 w-2 h-16 text-xs z-50 email-vertical">
+  <a href="mailto:mohammed.abdo1916@gmail.com" target="_blank" rel="noopener noreferrer" 
+  className="p-1 rounded text-2xl">
+  mohammed.abdo1916@gmail.com
+</a>
+</div>
      <Particles
         id="tsparticles" className=''
         particlesLoaded={particlesLoaded}
