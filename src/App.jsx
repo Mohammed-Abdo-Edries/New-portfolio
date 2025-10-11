@@ -13,25 +13,45 @@ import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 function App() {
   const [init, setInit] = useState(false);
-  const maxHeight = 300;
-    gsap.registerPlugin(ScrollTrigger);
-    useEffect(() => {
-      gsap.to("#scroll-progress-vertical", {
-        height: maxHeight, 
-        ease: "none", 
-      scrollTrigger: {
-        trigger: "body", 
-        start: "top top", 
-        end: "bottom bottom", 
-        scrub: true,
-      }
-    });
-    const timeout = setTimeout(() => {
-      ScrollTrigger.refresh(true);
-    },500);
-    return () => 
-      clearTimeout(timeout);
-  },[])
+  // const maxHeight = 300;
+  //   gsap.registerPlugin(ScrollTrigger);
+  //   useEffect(() => {
+  //     gsap.to("#scroll-progress-vertical", {
+  //       height: maxHeight, 
+  //       ease: "none", 
+  //     scrollTrigger: {
+  //       trigger: "body", 
+  //       start: "top top", 
+  //       end: "bottom bottom", 
+  //       scrub: true,
+  //     }
+  //   });
+  //   const timeout = setTimeout(() => {
+  //     ScrollTrigger.refresh(true);
+  //   },500);
+  //   return () => 
+  //     clearTimeout(timeout);
+  // },[])
+  useEffect(() => {
+  const handleScroll = () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+
+    const progressEl = document.getElementById("scroll-progress-vertical");
+    if (progressEl) {
+      // Define your max height (in pixels)
+      const maxHeight = 200; // adjust for your preferred visual size
+      const newHeight = (scrollPercent / 100) * maxHeight;
+      progressEl.style.height = `${newHeight}px`;
+    }
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
+
+
      useEffect(() => {
     initParticlesEngine(async (engine) => {
       await loadSlim(engine);

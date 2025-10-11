@@ -25,21 +25,22 @@ const paragraphRef = useRef(null);
         },
       }
     );
-    gsap.fromTo(
-      paragraphRef.current,
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        delay: 0.2,
-        scrollTrigger: {
-          trigger: paragraphRef.current,
-          start: "top bottom-=50",
-          toggleActions: "restart none restart none",
-        },
-      }
-    );
+   gsap.utils.toArray(".project-card").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: el,
+            start: "top bottom-=100",
+            toggleActions: "restart none restart none",
+          },
+        }
+      );
+    });
     gsap.utils.toArray(".button").forEach((el) => {
       gsap.fromTo(
         el,
@@ -66,14 +67,14 @@ const paragraphRef = useRef(null);
                     My <span className="text-primary"> Projects </span>
                 </h2>
                 <div className='text-center sm:flex'>
-                        <div ref={paragraphRef} className="overflow-hidden shadow-xs border-2 border-primary rounded-lg sm:mr-8
-                        bg-slate-200 dark:bg-slate-800 hover:scale-105 duration-300">
+                        <div className="project-card overflow-hidden shadow-xs border-2 border-primary rounded-lg sm:mr-8
+                        bg-slate-200  hover:scale-105 duration-300">
                             <div className='h-60 overflow-hidden'>
-                            <img className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-110' src={myImage2} alt="" />
+                            <img className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-110' src={myImage2} alt="facebookk clone image" />
                             </div>
                             <div className='px-4 py-4'>
                         <div className='py-8 px-2'>
-                            <div className='text-xs'>
+                            <div className='text-xs px-6'>
                             <span className='mr-2 px-2 py-1 border-2 border-slate-400 rounded-2xl'>React</span>
                             <span className='mr-2 px-2 py-1 border-2 border-slate-400 rounded-2xl'>Node.js</span>
                             <span className='mr-2 px-2 py-1 border-2 border-slate-400 rounded-2xl'>MongoDB</span>
@@ -93,14 +94,14 @@ const paragraphRef = useRef(null);
                         </div>
                         </div>
                         </div>
-                        <div ref={paragraphRef} className="overflow-hidden shadow-xs border-2 border-primary rounded-lg mt-8 sm:mt-0
-                        bg-slate-200 dark:bg-slate-800 hover:scale-105 duration-300">
+                        <div className="project-card overflow-hidden shadow-xs border-2 border-primary rounded-lg mt-8 sm:mt-0
+                        bg-slate-200 hover:scale-105 duration-300">
                             <div className='h-48 overflow-hidden'>
-                            <img className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-110' src={myImage} alt="" />
+                            <img className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-110' src={myImage} alt="ecommerce image" />
                             </div>
                             <div className='px-4 py-4'>
                         <div className='py-8 px-2'>
-                            <div className='text-xs'>
+                            <div className='text-xs px-6'>
                             <span className='mr-2 px-2 py-1 border-2 border-slate-400 rounded-2xl'>React</span>
                             <span className='mr-2 px-2 py-1 border-2 border-slate-400 rounded-2xl'>Node.js</span>
                             <span className='mr-2 px-2 py-1 border-2 border-slate-400 rounded-2xl'>MongoDB</span>

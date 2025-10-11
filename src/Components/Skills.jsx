@@ -51,7 +51,7 @@ const Skills = () => {
           duration: 0.8,
           scrollTrigger: {
             trigger: el,
-            start: "top 80%",
+            start: "top bottom-=100",
             toggleActions: "restart none restart none",
           },
         }

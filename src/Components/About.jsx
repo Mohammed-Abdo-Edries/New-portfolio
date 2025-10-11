@@ -47,7 +47,7 @@ const boxRef = useRef(null);
         delay: 0.2,
         scrollTrigger: {
           trigger: paragraphRef.current,
-          start: "top 85%",
+          start: "top bottom-=100",
           toggleActions: "restart none restart none",
         },
       }
@@ -62,7 +62,7 @@ const boxRef = useRef(null);
           duration: 0.8,
           scrollTrigger: {
             trigger: el,
-            start: "top bottom-=50",
+            start: "top bottom-=100",
             toggleActions: "restart none restart none",
           },
         }
@@ -119,7 +119,7 @@ const boxRef = useRef(null);
                         </div>
                     </div>
                 <div className="grid grid-cols-1 gap-6">
-                    <div className="p-6 hover:scale-105 duration-300 border-2 border-primary rounded-xl bg-slate-200 hover:shadow-xl card-color">
+                    <div className="skill-card p-6 hover:scale-105 duration-300 border-2 border-primary rounded-xl bg-slate-200 hover:shadow-xl card-color">
                     <div className="flex items-start gap-4">
                         <div className="p-3 rounded-full bg-primary/10">
                         <FaCode className='h-6 w-6' />
