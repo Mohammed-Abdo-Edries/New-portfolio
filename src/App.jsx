@@ -11,6 +11,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { useEffect, useMemo, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
+import Chatbot from './Components/chatbot';
 function App() {
   const [init, setInit] = useState(false);
   // const maxHeight = 300;
@@ -32,25 +33,30 @@ function App() {
   //   return () => 
   //     clearTimeout(timeout);
   // },[])
-  useEffect(() => {
-  const handleScroll = () => {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = (scrollTop / docHeight) * 100;
+//   useEffect(() => {
+//   const handleScroll = () => {
+//     const scrollTop = window.scrollY;
+//     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+//     const scrollPercent = (scrollTop / docHeight) * 100;
 
-    const progressEl = document.getElementById("scroll-progress-vertical");
-    if (progressEl) {
-      // Define your max height (in pixels)
-      const maxHeight = 200; // adjust for your preferred visual size
-      const newHeight = (scrollPercent / 100) * maxHeight;
-      progressEl.style.height = `${newHeight}px`;
-    }
-  };
+//     const progressEl = document.getElementById("scroll-progress-vertical");
+//     if (progressEl) {
+//       const maxHeight = 200; // adjust for your preferred visual size
+//       const newHeight = (scrollPercent / 100) * maxHeight;
+//       progressEl.style.height = `${newHeight}px`;
+//     }
+//   };
+//   window.addEventListener("scroll", handleScroll);
+//   return () => window.removeEventListener("scroll", handleScroll);
+// }, []);
 
-  window.addEventListener("scroll", handleScroll);
-  return () => window.removeEventListener("scroll", handleScroll);
-}, []);
-
+window.onscroll = function() {myFunction()};
+function myFunction() {
+  var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  var scrolled = (winScroll / height) * 100;
+  document.getElementById("myBar").style.width = scrolled + "%";
+}
 
      useEffect(() => {
     initParticlesEngine(async (engine) => {
@@ -135,17 +141,20 @@ function App() {
   );
   return (
     <BrowserRouter>   
-    <div
-    id="scroll-progress-vertical"
-  class="fixed right-6 sm:right-8 top-1/3 sm:top-1/4 w-2 sm:w-2 h-0 scroll-gradient rounded-xl z-50 transition-all duration-100 ease-out"
-></div>
+    <Chatbot />
+        <div className="header">
+      <h2>Scroll Indicator</h2>
+      <div className="progress-container">
+        <div className="progress-bar" id="myBar"></div>
+      </div>
+    </div>
 
-<div id="email" class="fixed left-6 sm:left-8 bottom-96 w-2 h-16 text-xs z-50 email-vertical">
-  <a href="mailto:mohammed.abdo1916@gmail.com" target="_blank" rel="noopener noreferrer" 
-  className="p-1 rounded text-2xl">
-  mohammed.abdo1916@gmail.com
-</a>
-</div>
+    <div id="email" className="fixed left-6 sm:left-8 bottom-96 w-2 h-16 text-xs z-50 email-vertical">
+      <a href="mailto:mohammed.abdo1916@gmail.com" target="_blank" rel="noopener noreferrer" 
+      className="p-1 rounded text-2xl">
+      mohammed.abdo1916@gmail.com
+    </a>
+    </div>
      <Particles
         id="tsparticles" className=''
         particlesLoaded={particlesLoaded}
