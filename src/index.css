@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --primary: "#204D389";
+}
+@layer utilities{
+    .text-primary{
+      color: #04D389
+    }
+    .bg-primary{
+      background-color: #04D389
+    }
+}
+
+.btn-color{
+  background: #04D389;
+}
+.scroll-gradient {
+    background: linear-gradient( #04D389); 
+}
+.header {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  background-color: #f1f1f1;
+}
+.progress-container {
+  width: 100%;
+  height: 8px;
+  background: #ccc;
+}
+
+/* The progress bar (scroll indicator) */
+.progress-bar {
+  height: 8px;
+  background: #04AA6D;
+  width: 0%;
+}
+.email-vertical {
+    writing-mode: sideways-lr;
+    transform: rotate(180deg);
+    white-space: nowrap;
+}
