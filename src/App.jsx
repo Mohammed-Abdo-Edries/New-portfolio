@@ -46,7 +46,7 @@ function App() {
           value: "#000000",
         },
       },
-      fpsLimit: 60,
+      fpsLimit: 40,
       interactivity: {
         events: {
           onClick: {
@@ -125,7 +125,7 @@ function App() {
           href="mailto:mohammed.abdo1916@gmail.com" 
           target="_blank" 
           rel="noopener noreferrer" 
-          className="p-1 rounded text-2xl"
+          className="p-1 rounded text-sm"
         >
           mohammed.abdo1916@gmail.com
         </a>

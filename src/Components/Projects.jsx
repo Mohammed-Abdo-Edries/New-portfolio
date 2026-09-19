@@ -3,25 +3,27 @@ import { FiExternalLink } from 'react-icons/fi'
 import { FaArrowRight, FaGithub } from 'react-icons/fa'
 import myImage from '../../Luxury.png'
 import myImage2 from '../../facebook.png'
-import { useEffect,useRef } from "react"
+import { useLayoutEffect,useRef } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 gsap.registerPlugin(ScrollTrigger);
 const Projects = () => {
+const sectionRef = useRef(null);
 const titleRef = useRef(null);
 const paragraphRef = useRef(null);
-   useEffect(() => {
+    useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
     gsap.fromTo(
       titleRef.current,
       { opacity: 0, y: 30 },
       {
         opacity: 1,
         y: 0,
-        duration: 1,
+        duration: 0.3,
         scrollTrigger: {
           trigger: titleRef.current,
           start: "top 80%",
-          toggleActions: "restart none restart none",
+           once: true,
         },
       }
     );
@@ -32,11 +34,11 @@ const paragraphRef = useRef(null);
         {
           opacity: 1,
           y: 0,
-          duration: 0.8,
+          duration: 0.3,
           scrollTrigger: {
             trigger: el,
             start: "top bottom-=100",
-            toggleActions: "restart none restart none",
+             once: true,
           },
         }
       );
@@ -48,15 +50,18 @@ const paragraphRef = useRef(null);
         {
           opacity: 1,
           y: 0,
-          duration: 0.8,
+          duration: 0.3,
           scrollTrigger: {
             trigger: el,
             start: "top 80%",
-            toggleActions: "restart none restart none",
+             once: true,
           },
         }
       );
     });
+  }, sectionRef);
+
+    return () => ctx.revert();
   }, []);
 
     return (

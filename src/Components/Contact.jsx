@@ -5,15 +5,17 @@ import { FiMapPin, FiPhone } from 'react-icons/fi'
 import { FaInstagram, FaLinkedin } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 import { TbBrandTelegram } from 'react-icons/tb'
-import { useEffect,useRef } from "react"
+import { useLayoutEffect,useRef } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import toast,{Toaster} from 'react-hot-toast'
 gsap.registerPlugin(ScrollTrigger);
 const Contact = () => {
+  const sectionRef = useRef(null);
   const titleRef = useRef(null);
 const paragraphRef = useRef(null);
-   useEffect(() => {
+   useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
     gsap.fromTo(
       titleRef.current,
       { opacity: 0, y: 30 },
@@ -24,7 +26,7 @@ const paragraphRef = useRef(null);
         scrollTrigger: {
           trigger: titleRef.current,
           start: "top 80%",
-          toggleActions: "restart none restart none",
+           once: true,
         },
       }
     );
@@ -39,7 +41,7 @@ const paragraphRef = useRef(null);
         scrollTrigger: {
           trigger: paragraphRef.current,
           start: "top 85%",
-          toggleActions: "restart none restart none",
+           once: true,
         },
       }
     );
@@ -54,11 +56,14 @@ const paragraphRef = useRef(null);
           scrollTrigger: {
             trigger: el,
             start: "top bottom-=50",
-            toggleActions: "restart none restart none",
+             once: true,
           },
         }
       );
     });
+}, sectionRef);
+
+    return () => ctx.revert();
   }, []);
   const form = useRef()
   const sendEmail = (e) => {

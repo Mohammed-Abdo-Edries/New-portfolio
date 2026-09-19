@@ -1,14 +1,16 @@
 // import Title from './Title'
 import { FaBriefcase, FaUser, FaCode } from 'react-icons/fa'
-import { useEffect,useRef } from "react"
+import { useLayoutEffect,useRef } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 gsap.registerPlugin(ScrollTrigger);
 const About = () => {
+const sectionRef = useRef(null);
 const boxRef = useRef(null);
     const titleRef1 = useRef(null);
   const paragraphRef = useRef(null);
-  useEffect(() => {
+   useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
     gsap.fromTo(
       boxRef.current,
       { opacity: 0, y: 30 },
@@ -19,7 +21,7 @@ const boxRef = useRef(null);
         scrollTrigger: {
           trigger: titleRef1.current,
           start: "top 80%",
-          toggleActions: "restart none restart none",
+           once: true,
         },
       }
     );
@@ -29,11 +31,11 @@ const boxRef = useRef(null);
       {
         opacity: 1,
         y: 0,
-        duration: 1,
+        duration: 0.3,
         scrollTrigger: {
           trigger: titleRef1.current,
           start: "top 80%",
-          toggleActions: "restart none restart none",
+           once: true,
         },
       }
     );
@@ -43,12 +45,12 @@ const boxRef = useRef(null);
       {
         opacity: 1,
         y: 0,
-        duration: 1,
-        delay: 0.2,
+        duration: 0.3,
+        delay: 0.1,
         scrollTrigger: {
           trigger: paragraphRef.current,
           start: "top bottom-=100",
-          toggleActions: "restart none restart none",
+           once: true,
         },
       }
     );
@@ -59,11 +61,11 @@ const boxRef = useRef(null);
         {
           opacity: 1,
           y: 0,
-          duration: 0.8,
+          duration: 0.3,
           scrollTrigger: {
             trigger: el,
             start: "top bottom-=100",
-            toggleActions: "restart none restart none",
+             once: true,
           },
         }
       );
@@ -75,15 +77,17 @@ const boxRef = useRef(null);
         {
           opacity: 1,
           y: 0,
-          duration: 0.8,
+          duration: 0.3,
           scrollTrigger: {
             trigger: el,
             start: "top 80%",
-            toggleActions: "restart none restart none",
+             once: true,
           },
         }
       );
     });
+}, sectionRef);
+    return () => ctx.revert();
   }, []);
     return (
         <section id="about" className="py-24 px-10 relative">
@@ -111,7 +115,7 @@ const boxRef = useRef(null);
                             </a>
 
                             <a 
-                                href="/mohamedcv.pdf" download
+                                href="/Mohamed_Abdo_Resume.pdf" download
                                 className="button px-6 py-2 rounded-full border-2 border-primary text-primary hover:bg-primary hover:text-white duration-300"
                             >
                                 Download CV

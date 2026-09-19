@@ -17,7 +17,7 @@ const Home = () => {
         y: 0,
         duration: 1,
         scrollTrigger: {
-          trigger: titleRef.current,
+          // trigger: titleRef.current,
           start: "top 80%",
           toggleActions: "restart none restart none",
         },
@@ -30,9 +30,9 @@ const Home = () => {
         opacity: 1,
         y: 0,
         duration: 1,
-        delay: 0.2,
+        // delay: 0.2,
         scrollTrigger: {
-          trigger: paragraphRef.current,
+          // trigger: paragraphRef.current,
           start: "top 85%",
           toggleActions: "restart none restart none",
         },
@@ -79,7 +79,7 @@ const Home = () => {
                         <CiMail />
                 </a>
             </div>
-                <div key='786' animation='slideInUp' className='duration-1500 delay-3000 mt-4'>
+                <div key='786' animation='slideInUp' className='duration-500 delay-200 mt-4'>
                     <button className='button bg-primary text-white px-8 py-2 text-base rounded-3xl hover:scale-105 duration-300'><a href='#projects' >View My Work</a></button>
                 </div>
             </div>
