@@ -24,12 +24,12 @@ export default {
         }
       },
       animation: {
-        fadeIn: 'fadeIn 0.7s ease-in-out forwards',
-        slideInDown: 'slideInDown 0.7s ease-in-out forwards'
+        fadeIn: 'fadeIn 0.3s ease-in-out forwards',
+        slideInDown: 'slideInDown 0.3s ease-in-out forwards'
       }
     }
   },
-  darkMode: '',
+  darkMode: "class",
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",

@@ -12,9 +12,12 @@ import { useEffect, useMemo, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import Chatbot from './Components/chatbot';
+import { useTheme } from "./context/ThemeContext.jsx";
 
 function App() {
   const [init, setInit] = useState(false);
+  const { theme } = useTheme();
+  const particleColor = theme === "dark" ? "#ffffff" : "#0f172a";
   useEffect(() => {
     const handleScroll = () => {
       const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -43,7 +46,7 @@ function App() {
     () => ({
       background: {
         color: {
-          value: "#000000",
+          value: theme === "dark" ? "#000000" : "#ffffff",
         },
       },
       fpsLimit: 40,
@@ -70,10 +73,10 @@ function App() {
       },
       particles: {
         color: {
-          value: "#ffffff",
+          value: theme === "dark" ? "#ffffff" : "#0f172a",
         },
         links: {
-          color: "#ffffff",
+          color: theme === "dark" ? "#ffffff" : "#0f172a",
           distance: 100,
           enable: true,
           opacity: 0.5,
@@ -93,7 +96,7 @@ function App() {
           density: {
             enable: true,
           },
-          value: 80,
+          value: 50,
         },
         opacity: {
           value: 0.5,
@@ -107,7 +110,7 @@ function App() {
       },
       detectRetina: true,
     }),
-    []
+    [theme]
   );
 
   return (
@@ -120,7 +123,7 @@ function App() {
         </div>
       </div>
       
-      <div id="email" className="fixed left-6 sm:left-8 text-white bottom-96 w-2 h-16 text-xs z-50 email-vertical">
+      <div id="email" className="fixed left-6 sm:left-8 bottom-[16rem] sm:bottom-[22rem] w-2 h-16 text-xs z-50 email-vertical">
         <a 
           href="mailto:mohammed.abdo1916@gmail.com" 
           target="_blank" 
@@ -131,13 +134,13 @@ function App() {
         </a>
       </div>
 
-      <Particles
-        id="tsparticles" 
-        className=""
-        particlesLoaded={particlesLoaded}
-        options={options}
-      /> 
-      <div className="relative rounded-xl z-20 text-white">
+      {init && (
+  <Particles
+    id="tsparticles"
+    options={options}
+  />
+)}
+      <div className="relative rounded-xl z-20 text-slate-900 dark:text-white">
         <Navbar />
         <Home />
         <About />

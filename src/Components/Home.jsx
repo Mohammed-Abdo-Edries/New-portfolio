@@ -69,7 +69,7 @@ const Home = () => {
                  I build interfaces that are both beautiful and functional.
                  </div>
                 <div key='88' className='flex justify-center mt-4 gap-2 text-xl'>
-                    <a href="https://github.com/Mohammed-Abdo-Edries" taret="_blank" rel="noopener noreferrer" className="p-1 rounded text-2xl">
+                    <a href="https://github.com/Mohammed-Abdo-Edries" target="_blank" rel="noopener noreferrer" className="p-1 rounded text-2xl">
                         <FiGithub />
                     </a>
                         <a href="https://www.linkedin.com/in/mohammed-abdo-92249a247" target="_blank" rel="noopener noreferrer" className="p-1 rounded text-2xl">
