@@ -12,7 +12,7 @@ import { useEffect, useMemo, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import Chatbot from './Components/chatbot';
-import { useTheme } from "./context/ThemeContext.jsx";
+import { useTheme } from "../ThemeContext.jsx";
 
 function App() {
   const [init, setInit] = useState(false);

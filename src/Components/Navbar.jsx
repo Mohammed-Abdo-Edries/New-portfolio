@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { GiHamburgerMenu } from "react-icons/gi"
 import { BsSunFill, BsFillMoonStarsFill } from "react-icons/bs"
 import { AnimatePresence, motion } from 'framer-motion'
-import { useTheme } from "../context/ThemeContext";
+import { useTheme } from "../../ThemeContext";
 const Navbar = () => {
     const {theme, toggleTheme} = useTheme("light")
     
