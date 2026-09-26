@@ -3,23 +3,19 @@ import ReactMarkdown from 'react-markdown';
 
 const STORAGE_KEY = 'gemini_portfolio_chat_history';
 const BACKEND_API_ENDPOINT = 'https://chatbot-len5.onrender.com/api/chat'; 
-const App = () => {
+const Chatbot = ({ onClose }) => {
   const [messages, setMessages] = useState([]);
   const [messageText, setMessageText] = useState('');
   const [isBotThinking, setIsBotThinking] = useState(false);
-  const [isOpen, setIsOpen] = useState(false); // Controls the visibility of the chat box
-    const messagesEndRef = useRef(null);
-    const currentUser = 'User123'; 
-  
+  const messagesEndRef = useRef(null);
+    // const currentUser = 'User123'; 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   useEffect(() => {
-    if (isOpen) {
-      scrollToBottom();
-    }
-  }, [messages, isOpen]);
+  scrollToBottom();
+}, [messages]);
 
   useEffect(() => {
     const storedHistory = localStorage.getItem(STORAGE_KEY);
@@ -157,7 +153,6 @@ const App = () => {
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end font-sans">
       
-      {isOpen && (
         <div 
           className="w-80 h-[420px] mb-4 bg-white rounded-xl shadow-2xl flex flex-col border border-gray-200 overflow-hidden 
                      transition-all duration-300 ease-in-out transform scale-100 opacity-100"
@@ -169,7 +164,7 @@ const App = () => {
               </svg>
               <h2 className="text-base font-semibold">Portfolio Chat</h2>
             </div>
-            <button onClick={() => setIsOpen(false)} className="p-1 rounded-full hover:bg-blue-700 transition">
+            <button onClick={onClose} className="p-1 rounded-full hover:bg-blue-700 transition">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
               </svg>
@@ -208,7 +203,7 @@ const App = () => {
                 onChange={(e) => setMessageText(e.target.value)}
                 placeholder="Ask a question..."
                 disabled={isBotThinking}
-                className="flex-1 p-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500 disabled:bg-gray-100"
+                className="flex-1 p-2 text-sm border text-black border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500 disabled:bg-gray-100"
               />
               <button
                 type="submit"
@@ -222,30 +217,14 @@ const App = () => {
             </form>
           </footer>
         </div>
-      )}
+      
 
-      <button 
-        onClick={() => setIsOpen(!isOpen)} 
-        className={`w-14 h-14 rounded-full text-white shadow-2xl flex items-center justify-center transition-all duration-300 ease-in-out ${
-          isOpen 
-            ? 'bg-red-500 hover:bg-red-600' 
-            : 'bg-blue-600 hover:bg-blue-700'
-        }`}
-        aria-label={isOpen ? "Close Chat" : "Open Chat"}
-      >
-        {isOpen ? (
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        ) : (
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.549A9.998 9.998 0 0112 2c4.97 0 9 3.582 9 8z"></path>
-          </svg>
-        )}
+      <button onClick={onClose} className="p-1 rounded-full hover:bg-blue-700 transition">
+        
       </button>
 
     </div>
   );
 };
 
-export default App;
+export default Chatbot;

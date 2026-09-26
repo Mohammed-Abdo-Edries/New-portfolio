@@ -3,7 +3,7 @@ import { FaLinkedin } from "react-icons/fa"
 import { CiMail } from "react-icons/ci"
 import { useEffect,useRef } from "react"
 import gsap from "gsap"
-import myImage from '../../IMG.jpg'
+import myImage from '../../image.avif'
 const Home = () => {
     const titleRef = useRef(null);
   const paragraphRef = useRef(null);
@@ -72,7 +72,7 @@ const Home = () => {
                     <a href="https://github.com/Mohammed-Abdo-Edries" target="_blank" rel="noopener noreferrer" className="p-1 rounded text-2xl">
                         <FiGithub />
                     </a>
-                        <a href="https://www.linkedin.com/in/mohammed-abdo-92249a247" target="_blank" rel="noopener noreferrer" className="p-1 rounded text-2xl">
+                        <a href="https://www.linkedin.com/in/mohamed-abdo-edries" target="_blank" rel="noopener noreferrer" className="p-1 rounded text-2xl">
                         <FaLinkedin />
                         </a>
                     <a href="mailto:mohammed.abdo1916@gmail.com" target="_blank" rel="noopener noreferrer" className="p-1 rounded text-2xl">

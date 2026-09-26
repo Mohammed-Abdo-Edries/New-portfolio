@@ -146,7 +146,7 @@ const paragraphRef = useRef(null);
             <div className="pt-8">
               <h4 className="font-medium mb-4"> Connect With Me</h4>
               <div className="flex space-x-4 justify-center text-2xl">
-                <a href="https://www.linkedin.com/in/mohammed-abdo-92249a247" target="_blank" rel="noopener noreferrer" >
+                <a href="https://www.linkedin.com/in/mohamed-abdo-edries" target="_blank" rel="noopener noreferrer" >
                   <FaLinkedin />
                 </a>
                 <a href="https://x.com/Mohamme05936302?t=99PLgceH8BqbQCXSaUH77w&s=09" target="_blank" rel="noopener noreferrer" >

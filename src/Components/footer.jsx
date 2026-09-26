@@ -11,7 +11,7 @@ export const Footer = () => {
       </p>
       <a
         href="#home"
-        className="p-2 rounded-full hover:bg-primary transition-colors"
+        className="p-2 mr-20 rounded-full hover:bg-primary transition-colors"
       >
         <FaArrowUp />
       </a>

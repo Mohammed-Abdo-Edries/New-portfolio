@@ -1,8 +1,8 @@
 // import Title from './Title'
 import { FiExternalLink } from 'react-icons/fi'
 import { FaArrowRight, FaGithub } from 'react-icons/fa'
-import myImage from '../../Luxury.png'
-import myImage2 from '../../facebook.png'
+import myImage from '../../luxury.avif'
+import myImage2 from '../../facebook.avif'
 import { useLayoutEffect,useRef } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
@@ -75,7 +75,10 @@ const paragraphRef = useRef(null);
                         <div className="project-card overflow-hidden shadow-xs border-2 border-primary rounded-lg sm:mr-8
                         bg-slate-200  hover:scale-105 duration-300">
                             <div className='h-60 overflow-hidden'>
-                            <img className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-110' src={myImage2} alt="facebookk clone image" />
+                            <img className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-110' src={myImage2} 
+                             loading="lazy"
+                              decoding="async"
+                            alt="facebookk clone image" />
                             </div>
                             <div className='px-4 py-4'>
                         <div className='py-8 px-2'>
@@ -102,7 +105,10 @@ const paragraphRef = useRef(null);
                         <div className="project-card overflow-hidden shadow-xs border-2 border-primary rounded-lg mt-8 sm:mt-0
                         bg-slate-200 hover:scale-105 duration-300">
                             <div className='h-48 overflow-hidden'>
-                            <img className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-110' src={myImage} alt="ecommerce image" />
+                            <img className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-110' src={myImage} 
+                             loading="lazy"
+                              decoding="async"
+                            alt="ecommerce image" />
                             </div>
                             <div className='px-4 py-4'>
                         <div className='py-8 px-2'>

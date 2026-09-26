@@ -6,17 +6,19 @@ import Contact from './Components/Contact';
 import About from './Components/About';
 import { BrowserRouter } from 'react-router-dom';
 import { Footer } from './Components/footer';
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useMemo, useState } from "react";
+// import gsap from "gsap";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-import Chatbot from './Components/chatbot';
+// import Chatbot from './Components/chatbot';
 import { useTheme } from "../ThemeContext.jsx";
 
 function App() {
   const [init, setInit] = useState(false);
   const { theme } = useTheme();
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const Chatbot = lazy(() => import("./Components/chatbot"));
   const particleColor = theme === "dark" ? "#ffffff" : "#0f172a";
   useEffect(() => {
     const handleScroll = () => {
@@ -115,7 +117,19 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Chatbot />
+     {isChatOpen && (
+  <Suspense fallback={null}>
+    <Chatbot onClose={() => setIsChatOpen(false)} />
+  </Suspense>
+)}
+
+<button
+  onClick={() => setIsChatOpen(true)}
+  aria-label="Open chat"
+  className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-white shadow-2xl transition-transform hover:scale-105"
+>
+  💬
+</button>
       <div className="header">
         <h2>Scroll Indicator</h2>
         <div className="progress-container">
