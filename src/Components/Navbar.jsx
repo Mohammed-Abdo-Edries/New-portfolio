@@ -40,9 +40,9 @@ const Navbar = () => {
 
   return (
     <header
-      dir="ltr"
-      className="fixed inset-x-0 top-0 z-10 h-14 w-full border-b border-primary/20 bg-white text-primary dark:bg-black dark:text-white sm:h-20"
-    >
+  dir="ltr"
+  className="fixed inset-x-0 top-0 z-[100] h-14 w-full border-b border-primary/20 bg-white text-primary dark:bg-black dark:text-white sm:h-20"
+>
       <div className="container mx-auto flex h-full max-w-full items-center justify-between px-8 sm:px-12">
         <div dir="ltr" className="px-4 text-xl font-bold">
           <span>Mohamed</span>{" "}

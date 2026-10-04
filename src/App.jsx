@@ -116,55 +116,57 @@ function App() {
   );
 
   return (
-    <BrowserRouter>
-     {isChatOpen && (
-  <Suspense fallback={null}>
-    <Chatbot onClose={() => setIsChatOpen(false)} />
-  </Suspense>
-)}
+  <BrowserRouter>
+    {isChatOpen && (
+      <Suspense fallback={null}>
+        <Chatbot onClose={() => setIsChatOpen(false)} />
+      </Suspense>
+    )}
 
-<button
-  onClick={() => setIsChatOpen(true)}
-  aria-label="Open chat"
-  className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-white shadow-2xl transition-transform hover:scale-105"
->
-  💬
-</button>
-      <div className="header">
-        <h2>Scroll Indicator</h2>
-        <div className="progress-container">
-          <div className="progress-bar" id="myBar"></div>
-        </div>
-      </div>
-      
-      <div id="email" className="fixed left-6 sm:left-8 bottom-[16rem] sm:bottom-[22rem] w-2 h-16 text-xs z-50 email-vertical">
-        <a 
-          href="mailto:mohammed.abdo1916@gmail.com" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          className="p-1 rounded text-sm"
-        >
-          mohammed.abdo1916@gmail.com
-        </a>
-      </div>
+    <button
+      onClick={() => setIsChatOpen(true)}
+      aria-label="Open chat"
+      className="fixed bottom-6 right-6 z-[200] flex h-14 w-14 items-center justify-center rounded-full bg-primary text-white shadow-2xl transition-transform hover:scale-105"
+    >
+      💬
+    </button>
 
-      {init && (
-  <Particles
-    id="tsparticles"
-    options={options}
-  />
-)}
-      <div className="relative rounded-xl z-20 text-slate-900 dark:text-white">
-        <Navbar />
-        <Home />
-        <About />
-        <Skills />
-        <Projects />
-        <Contact />
-        <Footer />
+    <div className="header">
+      <h2>Scroll Indicator</h2>
+      <div className="progress-container">
+        <div className="progress-bar" id="myBar"></div>
       </div>
-    </BrowserRouter>
-  );
+    </div>
+
+    <div
+      id="email"
+      dir="ltr"
+      className="email-vertical fixed bottom-[16rem] left-6 z-50 h-16 w-2 text-xs sm:bottom-[22rem] sm:left-8"
+    >
+      <a
+        href="mailto:mohammed.abdo1916@gmail.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="rounded p-1 text-sm"
+      >
+        mohammed.abdo1916@gmail.com
+      </a>
+    </div>
+
+    {init && <Particles id="tsparticles" options={options} />}
+
+    <Navbar />
+
+    <div className="relative z-0 text-slate-900 dark:text-white">
+      <Home />
+      <About />
+      <Skills />
+      <Projects />
+      <Contact />
+      <Footer />
+    </div>
+  </BrowserRouter>
+);
 }
 
 export default App;

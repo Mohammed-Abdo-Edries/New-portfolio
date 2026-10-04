@@ -7,15 +7,14 @@ import gsap from "gsap";
 import myImage from "../../image.avif";
 
 const Home = () => {
-const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
-const isArabic = (i18n.resolvedLanguage || "en") === "ar";
+  const isArabic = (i18n.resolvedLanguage || "en") === "ar";
 
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const paragraphRef = useRef(null);
   const socialRef = useRef(null);
-  // const buttonRef = useRef(null);
 
   useEffect(() => {
     const context = gsap.context(() => {
@@ -48,39 +47,34 @@ const isArabic = (i18n.resolvedLanguage || "en") === "ar";
             duration: 0.8,
           },
           "-=0.6"
-        )
-        // .from(
-        //   buttonRef.current,
-        //   {
-        //     opacity: 0,
-        //     y: 20,
-        //     duration: 0.8,
-        //   },
-        //   "-=0.6"
-        // );
+        );
     }, sectionRef);
 
     return () => context.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} id="home" className="relative px-10 py-16">
-  <div className="container mx-auto flex min-h-[calc(100vh-5rem)] max-w-full flex-col items-center justify-center text-center text-xl">
+    <section
+      ref={sectionRef}
+      id="home"
+      className="relative z-0 isolate px-10 py-16"
+    >
+      <div className="container relative z-0 mx-auto flex min-h-[calc(100vh-5rem)] max-w-full flex-col items-center justify-center text-center text-xl">
         <img
-  src={myImage}
-  alt="Mohamed Abdo"
-  className="relative top-4 mx-auto h-64 w-64 rounded-full border-2 border-black sm:h-72 sm:w-72"
-/>
+          src={myImage}
+          alt="Mohamed Abdo"
+          className="relative top-4 mx-auto h-64 w-64 rounded-full border-2 border-black sm:h-72 sm:w-72"
+        />
 
         <h1
-  ref={titleRef}
-  dir={isArabic ? "rtl" : "ltr"}
-  className="my-2 text-3xl font-bold sm:text-6xl"
->
-  <span>{t("home.intro")}</span>{" "}
-  <span className="text-primary">{t("home.firstName")}</span>{" "}
-  <span>{t("home.lastName")}</span>
-</h1>
+          ref={titleRef}
+          dir={isArabic ? "rtl" : "ltr"}
+          className="my-2 text-3xl font-bold sm:text-6xl"
+        >
+          <span>{t("home.intro")}</span>{" "}
+          <span className="text-primary">{t("home.firstName")}</span>{" "}
+          <span>{t("home.lastName")}</span>
+        </h1>
 
         <p ref={paragraphRef} dir="auto" className="mt-4 max-w-2xl">
           {t("home.description")}
@@ -120,13 +114,13 @@ const isArabic = (i18n.resolvedLanguage || "en") === "ar";
           </a>
         </div>
 
-       <a
-  href="#projects"
-  dir="auto"
-  className="relative z-10 mt-6 inline-block rounded-3xl bg-primary px-8 py-2 text-base text-white opacity-100 transition-transform duration-300 hover:scale-105"
->
-  {t("home.viewWork")}
-</a>
+        <a
+          href="#projects"
+          dir="auto"
+          className="mt-6 inline-block rounded-3xl bg-primary px-8 py-2 text-base text-white transition-transform duration-300 hover:scale-105"
+        >
+          {t("home.viewWork")}
+        </a>
       </div>
     </section>
   );

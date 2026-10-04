@@ -39,9 +39,7 @@ html.dark body {
 .header {
   position: fixed;
   top: 0;
-  z-index: 1;
-  width: 100%;
-  background-color: #f1f1f1;
+  z-index: 90;
 }
 .progress-container {
   width: 100%;
