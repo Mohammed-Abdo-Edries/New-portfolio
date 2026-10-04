@@ -1,90 +1,135 @@
-import { FiGithub } from "react-icons/fi"
-import { FaLinkedin } from "react-icons/fa"
-import { CiMail } from "react-icons/ci"
-import { useEffect,useRef } from "react"
-import gsap from "gsap"
-import myImage from '../../image.avif'
-const Home = () => {
-    const titleRef = useRef(null);
-  const paragraphRef = useRef(null);
-  
-  useEffect(() => {
-    gsap.fromTo(
-      titleRef.current,
-      { opacity: 0, y: -30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        scrollTrigger: {
-          // trigger: titleRef.current,
-          start: "top 80%",
-          toggleActions: "restart none restart none",
-        },
-      }
-    );
-    gsap.fromTo(
-      paragraphRef.current,
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        // delay: 0.2,
-        scrollTrigger: {
-          // trigger: paragraphRef.current,
-          start: "top 85%",
-          toggleActions: "restart none restart none",
-        },
-      }
-    );
-    gsap.utils.toArray(".button").forEach((el) => {
-      gsap.fromTo(
-        el,
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          scrollTrigger: {
-            trigger: el,
-            start: "top 80%",
-            toggleActions: "restart none restart none",
-          },
-        }
-      );
-    });
-  }, []);
-    return (
-        <section id="home" className="py-24 px-10 relative">
-        <div className='container text-center sm:h-[calc(90vh+0px)]text-xl max-w-full' >
-            <img src={myImage} className='w-80 h-80 mx-auto border-2 border-black rounded-full' alt="" />
-            <div ref={titleRef} className='flex justify-center my-2 sm:text-6xl font-bold text-3xl'> 
-            <div  className='pr-4 whitespace-nowrap'>Hi, I'm</div>
-            <span  className='pr-4 text-primary'>Mohamed</span>
-            <span  className=''>Abdo</span>
-            </div>
-            <div key='45' ref={paragraphRef} className='mt-4 max-w-2xl mx-auto'>
-                I create stellar web experiences with modern technologies. Specializing in front-end development,
-                 I build interfaces that are both beautiful and functional.
-                 </div>
-                <div key='88' className='flex justify-center mt-4 gap-2 text-xl'>
-                    <a href="https://github.com/Mohammed-Abdo-Edries" target="_blank" rel="noopener noreferrer" className="p-1 rounded text-2xl">
-                        <FiGithub />
-                    </a>
-                        <a href="https://www.linkedin.com/in/mohamed-abdo-edries" target="_blank" rel="noopener noreferrer" className="p-1 rounded text-2xl">
-                        <FaLinkedin />
-                        </a>
-                    <a href="mailto:mohammed.abdo1916@gmail.com" target="_blank" rel="noopener noreferrer" className="p-1 rounded text-2xl">
-                        <CiMail />
-                </a>
-            </div>
-                <div key='786' animation='slideInUp' className='duration-500 delay-200 mt-4'>
-                    <button className='button bg-primary text-white px-8 py-2 text-base rounded-3xl hover:scale-105 duration-300'><a href='#projects' >View My Work</a></button>
-                </div>
-            </div>
-                </section>
-    )
-}
+import { useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
+import { FiGithub } from "react-icons/fi";
+import { FaLinkedin } from "react-icons/fa";
+import { CiMail } from "react-icons/ci";
+import gsap from "gsap";
+import myImage from "../../image.avif";
 
-export default Home
+const Home = () => {
+const { t, i18n } = useTranslation();
+
+const isArabic = (i18n.resolvedLanguage || "en") === "ar";
+
+  const sectionRef = useRef(null);
+  const titleRef = useRef(null);
+  const paragraphRef = useRef(null);
+  const socialRef = useRef(null);
+  // const buttonRef = useRef(null);
+
+  useEffect(() => {
+    const context = gsap.context(() => {
+      const timeline = gsap.timeline({
+        defaults: {
+          ease: "power3.out",
+        },
+      });
+
+      timeline
+        .from(titleRef.current, {
+          opacity: 0,
+          y: -30,
+          duration: 1,
+        })
+        .from(
+          paragraphRef.current,
+          {
+            opacity: 0,
+            y: 20,
+            duration: 1,
+          },
+          "-=0.6"
+        )
+        .from(
+          socialRef.current,
+          {
+            opacity: 0,
+            y: 20,
+            duration: 0.8,
+          },
+          "-=0.6"
+        )
+        // .from(
+        //   buttonRef.current,
+        //   {
+        //     opacity: 0,
+        //     y: 20,
+        //     duration: 0.8,
+        //   },
+        //   "-=0.6"
+        // );
+    }, sectionRef);
+
+    return () => context.revert();
+  }, []);
+
+  return (
+    <section ref={sectionRef} id="home" className="relative px-10 py-16">
+  <div className="container mx-auto flex min-h-[calc(100vh-5rem)] max-w-full flex-col items-center justify-center text-center text-xl">
+        <img
+  src={myImage}
+  alt="Mohamed Abdo"
+  className="relative top-4 mx-auto h-64 w-64 rounded-full border-2 border-black sm:h-72 sm:w-72"
+/>
+
+        <h1
+  ref={titleRef}
+  dir={isArabic ? "rtl" : "ltr"}
+  className="my-2 text-3xl font-bold sm:text-6xl"
+>
+  <span>{t("home.intro")}</span>{" "}
+  <span className="text-primary">{t("home.firstName")}</span>{" "}
+  <span>{t("home.lastName")}</span>
+</h1>
+
+        <p ref={paragraphRef} dir="auto" className="mt-4 max-w-2xl">
+          {t("home.description")}
+        </p>
+
+        <div
+          ref={socialRef}
+          dir="ltr"
+          className="mt-4 flex justify-center gap-2 text-2xl"
+        >
+          <a
+            href="mailto:mohammed.abdo1916@gmail.com"
+            aria-label={t("home.emailLabel")}
+            className="rounded p-1"
+          >
+            <CiMail />
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/mohamed-abdo-edries"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t("home.linkedinLabel")}
+            className="rounded p-1"
+          >
+            <FaLinkedin />
+          </a>
+
+          <a
+            href="https://github.com/Mohammed-Abdo-Edries"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t("home.githubLabel")}
+            className="rounded p-1"
+          >
+            <FiGithub />
+          </a>
+        </div>
+
+       <a
+  href="#projects"
+  dir="auto"
+  className="relative z-10 mt-6 inline-block rounded-3xl bg-primary px-8 py-2 text-base text-white opacity-100 transition-transform duration-300 hover:scale-105"
+>
+  {t("home.viewWork")}
+</a>
+      </div>
+    </section>
+  );
+};
+
+export default Home;

@@ -1,71 +1,144 @@
-import Popup from 'reactjs-popup'
-import { useEffect } from 'react'
-import { GiHamburgerMenu } from "react-icons/gi"
-import { BsSunFill, BsFillMoonStarsFill } from "react-icons/bs"
-import { AnimatePresence, motion } from 'framer-motion'
+import Popup from "reactjs-popup";
+import { useEffect } from "react";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { BsSunFill, BsFillMoonStarsFill } from "react-icons/bs";
+import { AnimatePresence, motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { useTheme } from "../../ThemeContext";
+
 const Navbar = () => {
-    const {theme, toggleTheme} = useTheme("light")
-    
-    useEffect(() => {
-        if (theme === "dark") {
-            document.documentElement.classList.add("dark");
-        } else {
-            document.documentElement.classList.remove("dark");
-        }
-    }, [theme])
+  const { theme, toggleTheme } = useTheme();
+  const { t, i18n } = useTranslation();
 
-    const variants = {
-        hidden: { y: -20, opacity: 0 },
-        enter: { y: 0, opacity: 1 },
-        exit: { y: 25, opacity: 0 }
-    }
+  const currentLanguage = i18n.resolvedLanguage || "en";
+  const isArabic = currentLanguage === "ar";
 
-    return (
-        <div className='fixed top-0 max-w-full container flex justify-between z-10 bg-white dark:bg-black
-text-slate-900 dark:text-white border-b border-primary/20 text-primary h-14 sm:h-20 py-3 sm:py-7 px-8 sm:px-12'>
-            <div className='px-4 text-xl font-bold'>
-                <span>Mohamed</span>{" "}<span className='text-primary'>Portfolio</span>
-            </div>
-            <div className='flex ml-auto items-center'>
-                <div className='hidden sm:block'>
-                    <a className='hover:text-primary transition-colors duration-300' href="#home">Home</a>
-                    <a className='pl-4 hover:text-primary transition-colors duration-300' href="#about">About</a>
-                    <a className='pl-4 hover:text-primary transition-colors duration-300' href="#skills">Skills</a>
-                    <a className='pl-4 hover:text-primary transition-colors duration-300' href="#projects">Projects</a>
-                    <a className='pl-4 hover:text-primary transition-colors duration-300' href="#contact">Contact</a>
-                </div>
-<div className="top-3 sm:top-7 mr-2 text-slate-900 dark:text-white">
-      <button
-        onClick={toggleTheme}
-        aria-label="Toggle color theme"
-        className="ml-4 rounded-full p-2 text-slate-800 hover:bg-slate-200 dark:text-white dark:hover:bg-slate-800"
-      >
-        {theme === "dark" ? <BsSunFill /> : <BsFillMoonStarsFill />}
-      </button>
-      </div>
-                <Popup trigger={<button><GiHamburgerMenu className='ml-2 sm:hidden text-xl'/></button>} closeOnDocumentClick position={"bottom right"}>
-                    <ul className='w-60 rounded-md bg-white dark:bg-slate-950 dark:text-white animate-slideInDown shadow-lg'>
-                        <li className='pb-2 hover:pl-6 pl-4 py-2 border-slate-300 border-b-2 transition-all duration-200'>
-                            <a key={"home"} href="#home">Home</a>
-                        </li>
-                        <li className='pb-2 hover:pl-6 pl-4 py-2 border-slate-300 border-b-2 transition-all duration-200'>
-                            <a key={"about"} href="#about">About Me</a>
-                        </li>
-                        <li className='pb-2 hover:pl-6 pt-2 border-slate-300 pl-4 border-b-2 transition-all duration-200'>
-                            <a key={"skills"} href="#skills">Skills</a>
-                        </li>
-                        <li className='pb-2 hover:pl-6 py-2 border-slate-300 pl-4 border-b-2 transition-all duration-200'>
-                            <a key={"projects"} href="#projects">My Projects</a>
-                        </li>
-                        <li className='pb-2 hover:pl-6 pl-4 py-2 transition-all duration-200'>
-                            <a key={"contact"} href="#contact">Contact Me</a>
-                        </li>
-                    </ul>
-                </Popup>
-            </div>
+  const navItems = [
+    { href: "#home", label: t("nav.home") },
+    { href: "#about", label: t("nav.about") },
+    { href: "#skills", label: t("nav.skills") },
+    { href: "#projects", label: t("nav.projects") },
+    { href: "#contact", label: t("nav.contact") },
+  ];
+
+  const variants = {
+    hidden: { y: -20, opacity: 0 },
+    enter: { y: 0, opacity: 1 },
+    exit: { y: 25, opacity: 0 },
+  };
+
+  const toggleLanguage = () => {
+    i18n.changeLanguage(isArabic ? "en" : "ar");
+  };
+
+  useEffect(() => {
+    document.documentElement.lang = currentLanguage;
+    document.documentElement.dir = isArabic ? "rtl" : "ltr";
+
+    localStorage.setItem("language", currentLanguage);
+  }, [currentLanguage, isArabic]);
+
+  return (
+    <header
+      dir="ltr"
+      className="fixed inset-x-0 top-0 z-10 h-14 w-full border-b border-primary/20 bg-white text-primary dark:bg-black dark:text-white sm:h-20"
+    >
+      <div className="container mx-auto flex h-full max-w-full items-center justify-between px-8 sm:px-12">
+        <div dir="ltr" className="px-4 text-xl font-bold">
+          <span>Mohamed</span>{" "}
+          <span className="text-primary">Portfolio</span>
         </div>
-    )
-}
 
-export default Navbar
+        <div className="ml-auto flex items-center gap-2">
+          <nav dir="ltr" className="hidden items-center gap-4 sm:flex">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                dir="auto"
+                className="flex h-8 w-24 items-center justify-center whitespace-nowrap transition-colors duration-300 hover:text-primary"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
+          <button
+            type="button"
+            onClick={toggleLanguage}
+            aria-label={t(
+              isArabic ? "nav.switchToEnglish" : "nav.switchToArabic"
+            )}
+            className="rounded-lg border px-3 py-1 text-sm transition-colors hover:bg-primary hover:text-white"
+          >
+            {isArabic ? "EN" : "عربي"}
+          </button>
+
+          <button
+            type="button"
+            onClick={toggleTheme}
+            aria-label={t("nav.toggleTheme")}
+            className="flex h-8 w-8 items-center justify-center rounded-full text-slate-800 transition-transform duration-300 hover:scale-125 hover:bg-slate-200 dark:text-white dark:hover:bg-slate-800"
+          >
+            <AnimatePresence mode="wait" initial={false}>
+              {theme === "dark" ? (
+                <motion.div
+                  key="sun"
+                  variants={variants}
+                  initial="hidden"
+                  animate="enter"
+                  exit="exit"
+                  transition={{ duration: 0.3 }}
+                  className="flex items-center text-orange-200"
+                >
+                  <BsSunFill />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="moon"
+                  variants={variants}
+                  initial="hidden"
+                  animate="enter"
+                  exit="exit"
+                  transition={{ duration: 0.3 }}
+                  className="flex items-center text-purple-700"
+                >
+                  <BsFillMoonStarsFill />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </button>
+
+          <Popup
+            trigger={
+              <button
+                type="button"
+                aria-label="Open menu"
+                className="sm:hidden"
+              >
+                <GiHamburgerMenu className="text-xl" />
+              </button>
+            }
+            closeOnDocumentClick
+            position="bottom right"
+          >
+            <ul className="w-60 rounded-md bg-white shadow-lg dark:bg-slate-950 dark:text-white">
+              {navItems.map((item) => (
+                <li
+                  key={item.href}
+                  className="border-b-2 border-slate-300 px-4 py-2 transition-all duration-200 hover:pl-6"
+                >
+                  <a href={item.href} dir="auto">
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </Popup>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export default Navbar;

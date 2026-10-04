@@ -1,205 +1,340 @@
-// import Title from './Title'
-import emailjs from '@emailjs/browser'
-import {MdOutlineMail} from 'react-icons/md'
-import { FiMapPin, FiPhone } from 'react-icons/fi'
-import { FaInstagram, FaLinkedin } from 'react-icons/fa'
-import { FaXTwitter } from 'react-icons/fa6'
-import { TbBrandTelegram } from 'react-icons/tb'
-import { useLayoutEffect,useRef } from "react"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-import toast,{Toaster} from 'react-hot-toast'
+import emailjs from "@emailjs/browser";
+import { useLayoutEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
+import { MdOutlineMail } from "react-icons/md";
+import { FiMapPin, FiPhone } from "react-icons/fi";
+import { FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { TbBrandTelegram } from "react-icons/tb";
+import toast, { Toaster } from "react-hot-toast";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 gsap.registerPlugin(ScrollTrigger);
+
 const Contact = () => {
+  const { t, i18n } = useTranslation();
+
+  const isArabic = (i18n.resolvedLanguage || "en") === "ar";
+  const infoAlignment = isArabic ? "text-right" : "text-left";
+  const infoDirection = isArabic ? "rtl" : "ltr";
+
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
-const paragraphRef = useRef(null);
-   useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-    gsap.fromTo(
-      titleRef.current,
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        scrollTrigger: {
-          trigger: titleRef.current,
-          start: "top 80%",
-           once: true,
-        },
-      }
-    );
-    gsap.fromTo(
-      paragraphRef.current,
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        delay: 0.2,
-        scrollTrigger: {
-          trigger: paragraphRef.current,
-          start: "top 85%",
-           once: true,
-        },
-      }
-    );
-    gsap.utils.toArray(".card").forEach((el) => {
+  const paragraphRef = useRef(null);
+  const formRef = useRef(null);
+
+  useLayoutEffect(() => {
+    const context = gsap.context(() => {
       gsap.fromTo(
-        el,
-        { opacity: 0, y: 50 },
+        titleRef.current,
+        { opacity: 0, y: 30 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.8,
+          duration: 0.6,
           scrollTrigger: {
-            trigger: el,
-            start: "top bottom-=50",
-             once: true,
+            trigger: titleRef.current,
+            start: "top 80%",
+            once: true,
           },
         }
       );
-    });
-}, sectionRef);
 
-    return () => ctx.revert();
+      gsap.fromTo(
+        paragraphRef.current,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          scrollTrigger: {
+            trigger: paragraphRef.current,
+            start: "top 85%",
+            once: true,
+          },
+        }
+      );
+
+      gsap.utils
+        .toArray(".contact-card, .contact-form")
+        .forEach((element) => {
+          gsap.fromTo(
+            element,
+            { opacity: 0, y: 40 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.6,
+              scrollTrigger: {
+                trigger: element,
+                start: "top 90%",
+                once: true,
+              },
+            }
+          );
+        });
+    }, sectionRef);
+
+    return () => context.revert();
   }, []);
-  const form = useRef()
-  const sendEmail = (e) => {
-    e.preventDefault();
-    emailjs.sendForm('service_yutqxp8', 'template_7ukvip4', form.current, 'vEjBKvvVFAosxOS7A')     
-      .then((result) => {
-          window.location.reload(false)
-          toast.success("Message Successfully sent!")
-          e.preventDefault();
-      }, (error) => {
-          toast.error("Failed to Send Message", error)
-      }
-    )
-  }
-    return (
-        <section id='contact' className='pt-24 pb-8 text-center'>
-          <div className='container px-10'>
-          <div ref={titleRef} className='text-3xl sm:text-4xl mb-8 font-bold'>
-            Get In <span className='pl-1 text-primary'>Touch</span>
-          </div> 
-          <div ref={paragraphRef} className='mb-8 max-w-2xl mx-auto text-lg'>
-            Have a project in mind or want to collaborate? Feel free to reach out.
-            I'm always open to discussing new opportunities.
-          </div>
-          <div className='container max-w-5xl text-center mx-auto
-          grid grid-cols-1 md:grid-cols-2 gap-12
-          '>
-            <div className="gap-12">
-          <div className="space-y-8">
-            <h3 className="text-2xl font-semibold mb-6">
-              {" "}
-              Contact Information
+
+  const sendEmail = (event) => {
+    event.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_yutqxp8",
+        "template_7ukvip4",
+        formRef.current,
+        "vEjBKvvVFAosxOS7A"
+      )
+      .then(() => {
+        toast.success(t("contact.success"));
+        formRef.current.reset();
+      })
+      .catch(() => {
+        toast.error(t("contact.failure"));
+      });
+  };
+
+  return (
+    <section
+      ref={sectionRef}
+      id="contact"
+      className="px-10 pb-8 pt-24 text-center"
+    >
+      <div className="container mx-auto">
+        <h2
+          ref={titleRef}
+          dir="auto"
+          className="mb-8 text-3xl font-bold sm:text-4xl"
+        >
+          <span>{t("contact.titlePrefix")}</span>{" "}
+          <span className="text-primary">
+            {t("contact.titleHighlight")}
+          </span>
+        </h2>
+
+        <p
+          ref={paragraphRef}
+          dir="auto"
+          className="mx-auto mb-8 max-w-2xl text-lg"
+        >
+          {t("contact.intro")}
+        </p>
+
+        <div
+          dir="ltr"
+          className="container mx-auto grid max-w-5xl grid-cols-1 gap-12 md:grid-cols-2"
+        >
+          <div dir={infoDirection}>
+            <h3 className="mb-6 text-2xl font-semibold">
+              {t("contact.information")}
             </h3>
 
-            <div className="justify-center">
-              <div className="card flex items-start border-2 border-primary my-6 py-2 px-4 hover:scale-105 duration-300
-               bg-slate-200 dark:bg-slate-800 rounded-xl">
-                <div className="px-4 py-4">
-                  <MdOutlineMail className='text-primary text-2xl'/>
+            <div className="space-y-4">
+              <div
+                dir="ltr"
+                className="contact-card flex items-start rounded-xl border-2 border-primary bg-slate-200 px-4 py-2 duration-300 hover:scale-105 dark:bg-slate-800"
+              >
+                <div className="shrink-0 px-4 py-4">
+                  <MdOutlineMail className="text-2xl text-primary" />
                 </div>
-                <div>
-                  <h4 className="font-medium"> Email</h4>
+
+                <div
+                  dir={infoDirection}
+                  className={`min-w-0 flex-1 ${infoAlignment}`}
+                >
+                  <h4 className="font-medium">
+                    {t("contact.email")}
+                  </h4>
+
                   <a
                     href="mailto:mohammed.abdo1916@gmail.com"
-                    className="text-xs sm:text-base hover:text-primary transition-colors"
+                    dir="ltr"
+                    className={`block break-all text-xs transition-colors hover:text-primary sm:text-base ${infoAlignment}`}
                   >
                     mohammed.abdo1916@gmail.com
                   </a>
                 </div>
               </div>
-              <div className="card flex items-start border-2 border-primary my-4 py-2 px-4 hover:scale-105 duration-300
-               bg-slate-200 dark:bg-slate-800 rounded-xl">
-                  <div className='px-4 py-4'>
-                  <FiPhone className='text-primary text-2xl' />
-                  </div>
-                <div>
-                  <h4 className="font-medium"> Phone</h4>
+
+              <div
+                dir="ltr"
+                className="contact-card flex items-start rounded-xl border-2 border-primary bg-slate-200 px-4 py-2 duration-300 hover:scale-105 dark:bg-slate-800"
+              >
+                <div className="shrink-0 px-4 py-4">
+                  <FiPhone className="text-2xl text-primary" />
+                </div>
+
+                <div
+                  dir={infoDirection}
+                  className={`min-w-0 flex-1 ${infoAlignment}`}
+                >
+                  <h4 className="font-medium">
+                    {t("contact.phone")}
+                  </h4>
+
                   <a
                     href="tel:+249112408191"
-                    className="hover:text-primary transition-colors"
+                    dir="ltr"
+                    className={`block transition-colors hover:text-primary ${infoAlignment}`}
                   >
                     +249 112 40 8191
                   </a>
                 </div>
               </div>
-              <div className="card flex items-start border-2 border-primary my-4 py-2 px-4 hover:scale-105 duration-300
-              bg-slate-200 dark:bg-slate-800 rounded-xl">
-                  <div className='px-4 py-4'>
-                  <FiMapPin className='text-primary text-2xl'/>
-                  </div>
-                <div>
-                  <h4 className="font-medium"> Location</h4>
-                  <a className="hover:text-primary transition-colors">
-                    Kassla, Sudan
-                  </a>
+
+              <div
+                dir="ltr"
+                className="contact-card flex items-start rounded-xl border-2 border-primary bg-slate-200 px-4 py-2 duration-300 hover:scale-105 dark:bg-slate-800"
+              >
+                <div className="shrink-0 px-4 py-4">
+                  <FiMapPin className="text-2xl text-primary" />
+                </div>
+
+                <div
+                  dir={infoDirection}
+                  className={`min-w-0 flex-1 ${infoAlignment}`}
+                >
+                  <h4 className="font-medium">
+                    {t("contact.location")}
+                  </h4>
+
+                  <span className={`block ${infoAlignment}`}>
+                    {t("contact.locationValue")}
+                  </span>
                 </div>
               </div>
             </div>
 
             <div className="pt-8">
-              <h4 className="font-medium mb-4"> Connect With Me</h4>
-              <div className="flex space-x-4 justify-center text-2xl">
-                <a href="https://www.linkedin.com/in/mohamed-abdo-edries" target="_blank" rel="noopener noreferrer" >
+              <h4 className="mb-4 font-medium">
+                {t("contact.connect")}
+              </h4>
+
+              <div
+                dir="ltr"
+                className="flex justify-center gap-4 text-2xl"
+              >
+                <a
+                  href="https://www.linkedin.com/in/mohamed-abdo-edries"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="transition-colors hover:text-primary"
+                >
                   <FaLinkedin />
                 </a>
-                <a href="https://x.com/Mohamme05936302?t=99PLgceH8BqbQCXSaUH77w&s=09" target="_blank" rel="noopener noreferrer" >
+
+                <a
+                  href="https://x.com/Mohamme05936302?t=99PLgceH8BqbQCXSaUH77w&s=09"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="X"
+                  className="transition-colors hover:text-primary"
+                >
                   <FaXTwitter />
                 </a>
-                <a href="https://www.instagram.com/moha_abdo4?igsh=cjFnZzFyand1Z3px" target="_blank" rel="noopener noreferrer" >
+
+                <a
+                  href="https://www.instagram.com/moha_abdo4?igsh=cjFnZzFyand1Z3px"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="transition-colors hover:text-primary"
+                >
                   <FaInstagram />
                 </a>
               </div>
             </div>
           </div>
-          </div>
 
-                  <form className="card px-8 pt-8 pb-10 border-2 border-primary rounded-lg shadow-xs bg-slate-200 dark:bg-slate-800 
-                  transition-colors" ref={form} 
-                   onSubmit={sendEmail}
-                  >
-                    <h3 className='text-2xl font-semibold mb-6'>Send a Message</h3>
-                      <div className=''>
-                        <label htmlFor="name" className='block text-sm font-medium mb-2'>
-                          Your Name
-                        </label>
-                        <input type="text" id='name' className="w-full border-slate-300 border-2 rounded-md dark:bg-black
-                         px-4 py-3 focus:outline-none bg-transparent" name="name" placeholder="Name" required/>
-                      </div>
-                      <div className='my-4'>
-                        <label htmlFor="email" className='block text-sm font-medium mb-2'>
-                          Your Email
-                        </label>
-                        <input type="email" id='email'
-                        className="w-full border-slate-300 border-2 px-4 py-3 bg-transparent dark:bg-black
-                        focus:outline-none  rounded-md"
-                         name="email" placeholder="Email" required/>
-                      </div>
-                      <div className='mb-4'>
-                        <label htmlFor="message"
-                        className='block text-sm font-medium mb-2'>
-                          Your Message
-                        </label>
-                        <textarea placeholder="Message" id='message'
-                        className="border-slate-300 border-2 rounded-md w-full px-4 py-3 bg-transparent dark:bg-black
-                        focus:outline-none" 
-                        name="message" required></textarea>
-                      </div>
-                        <button type="submit" className='flex justify-center w-full bg-primary py-2 rounded-3xl text-white hover:scale-105 duration-300' >
-                        Send Message <span className='ml-2 text-xl pt-1'><TbBrandTelegram /> </span> 
-                           </button>
-                  </form>
-                <Toaster />
-        </div>
-        </div>
-        </section>
-    )
-}
+          <form
+            ref={formRef}
+            onSubmit={sendEmail}
+            dir={infoDirection}
+            className="contact-form rounded-lg border-2 border-primary bg-slate-200 px-8 pb-10 pt-8 text-start shadow-sm dark:bg-slate-800"
+          >
+            <h3 className="mb-6 text-2xl font-semibold">
+              {t("contact.sendTitle")}
+            </h3>
 
-export default Contact
+            <div>
+              <label
+                htmlFor="name"
+                className="mb-2 block text-sm font-medium"
+              >
+                {t("contact.yourName")}
+              </label>
+
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder={t("contact.namePlaceholder")}
+                required
+                dir={infoDirection}
+                className="w-full rounded-md border-2 border-slate-300 bg-transparent px-4 py-3 focus:outline-none dark:bg-black"
+              />
+            </div>
+
+            <div className="my-4">
+              <label
+                htmlFor="email"
+                className="mb-2 block text-sm font-medium"
+              >
+                {t("contact.yourEmail")}
+              </label>
+
+              <input
+  type="email"
+  id="email"
+  name="email"
+  placeholder={t("contact.emailPlaceholder")}
+  required
+  dir="ltr"
+  style={{
+    textAlign: isArabic ? "right" : "left",
+  }}
+  className="w-full rounded-md border-2 border-slate-300 bg-transparent px-4 py-3 focus:outline-none dark:bg-black"
+/>
+            </div>
+
+            <div className="mb-4">
+              <label
+                htmlFor="message"
+                className="mb-2 block text-sm font-medium"
+              >
+                {t("contact.yourMessage")}
+              </label>
+
+              <textarea
+                id="message"
+                name="message"
+                placeholder={t("contact.messagePlaceholder")}
+                required
+                dir={infoDirection}
+                className="min-h-32 w-full rounded-md border-2 border-slate-300 bg-transparent px-4 py-3 focus:outline-none dark:bg-black"
+              />
+            </div>
+
+            <button
+              type="submit"
+              dir="ltr"
+              className="flex w-full justify-center gap-2 rounded-3xl bg-primary py-2 text-white duration-300 hover:scale-105"
+            >
+              <span dir={infoDirection}>{t("contact.send")}</span>
+              <TbBrandTelegram className="pt-1 text-xl" />
+            </button>
+          </form>
+        </div>
+
+        <Toaster />
+      </div>
+    </section>
+  );
+};
+
+export default Contact;
